@@ -1,34 +1,6 @@
 /*その他と主な共通部分は省略*/
 
-.btn-all {
-    display: block
+body{
+    background-color: aquamarine;
 }
 
-.btn {
-    width: 50vw;
-    font-size: 2rem;
-    text-align: center;
-    font-weight:bold  ;
-    color: #fff;
-    border-radius: 100vh;
-    background-image: -webkit-linear-gradient(110deg, #e9defa 0%, #fbfcdb 100%);
-    background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
-    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-    margin: 30px;
-    color: red;
-}
-
-.btn a span {
-    background-image: -webkit-gradient(linear, left top, right top, from(#93a5cf), to(#e4efe9));
-    background-image: -webkit-linear-gradient(left, #93a5cf 0%, #e4efe9 100%);
-    background-image: linear-gradient(to right, #93a5cf 0%, #e4efe9 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-}
-
-.btn:hover {
-    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
-}
