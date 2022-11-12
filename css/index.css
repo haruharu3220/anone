@@ -16,12 +16,7 @@
     -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
     box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
     margin: 30px;
-}
-
-.btn a {
-    /*ボタンの下線を消す */
-    text-decoration: none;
-
+    color: red;
 }
 
 .btn a span {
