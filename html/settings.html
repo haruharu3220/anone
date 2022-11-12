@@ -4,8 +4,17 @@
 ■おしゃれなテキストエリアデザイン集
 https://copypet.jp/692/
 
+★★　https://kodocode.net/design-css-textbox/
+
+
 ■おしゃれなテキストエリア
 https://coliss.com/articles/build-websites/operation/css/box-shadow-saturated-and-desaturated.html
+
+
+■SCSS
+https://marketplace.visualstudio.com/items?itemName=ritwickdey.live-sass
+
+
 
 -----------------------------------------------------
 -->
@@ -13,6 +22,7 @@ https://coliss.com/articles/build-websites/operation/css/box-shadow-saturated-an
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,13 +34,20 @@ https://coliss.com/articles/build-websites/operation/css/box-shadow-saturated-an
     <link rel="stylesheet" href="../css/settings.css">
     <title>あのね。</title>
 </head>
-<body>
-    
-    <h1>メンバー一覧</h1>
-    <input type=”text” name=” ” value=” ” size=”35vw” maxlength=””>
 
+<body>
+
+    <h1>メンバー一覧</h1>
+
+    <form autocomplete="off">
+        <div class="inputMember">
+            <input type=”text” class="inputMenberInput" half placeholder="name" autocomplete="no">
+        </div>
+    </form>
+    <div class="btn btn-save"><span>保存</span></div>
     <div class="btn btn-returnTop"><span>戻る</span></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../js/settings.js"></script>
 </body>
+
 </html>
