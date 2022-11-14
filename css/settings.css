@@ -1,6 +1,34 @@
+/* フォント候補
+(1)えり字
+http://v7.mine.nu/pysco/gallery/font/06.html
+
+(2)からかぜ
+https://enuoka.booth.pm/items/1219316
+
+(3)アオハルメーカー
+https://booth.pm/ja/items/3842233
+
+(4)TA恋心（Adobe Fonts）
+https://fonts.adobe.com/fonts/ta-koigokoro#fonts-section */
+
+
+/* Webフォントを定義 */
+@font-face {
+  font-family: 'myfont';/* フォント名 */
+
+  src: url('../res/aoharu-marker-mini.ttf') format('truetype');
+
+  /* src: url('../res/DragonQuestFC.ttf') format('truetype'); */
+
+}
+
+
+
 
 body {
   background-color: aquamarine;
+  font-family: myfont;
+  /* font-family: ta-koigokoro, sans-serif; */
 }
 
 
@@ -9,10 +37,3 @@ body {
 width: 100px;
 }
 
-.aaa{
-  width: ;
-  height: ;
-  background-color: white;
-  margin: ;
-
-}

@@ -1,3 +1,9 @@
+$(".btn-comment").on("click",function(){
+    console.log("コメントボタン押したよ");
+location.href="../html/history.html";
+});
+
+
 $(".btn-logout").on("click",function(){
     console.log("ログアウトボタン押したよ");
 location.href="../html/login.html";

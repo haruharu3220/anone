@@ -1,4 +1,4 @@
-        <!-- 
+<!-- 
 ------------------------参考URL----------------------
  ■HTMLのClass名を複数付ける意味・メリット        
 https://digitor.jp/textbook/html-multipleclass/#class
@@ -11,6 +11,14 @@ https://web-camp.io/magazine/archives/82438#:~:text=URL%E3%83%AA%E3%83%B3%E3%82%
 
 ■CSS長さの単位
 https://qiita.com/anchoor/items/f197296d6b4ae874e260
+
+
+■おしゃれ画像入手　★★★
+https://www.photo-ac.com/
+
+
+■画像をぼかす
+https://goat-inc.co.jp/blog/1920/
 -----------------------------------------------------
 -->
 
@@ -26,6 +34,7 @@ https://qiita.com/anchoor/items/f197296d6b4ae874e260
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/sanitize.css">
     <link rel="stylesheet" href="../css/button.css">
+    <link rel="stylesheet" href="../css/index.css">
 
 
 
@@ -34,21 +43,22 @@ https://qiita.com/anchoor/items/f197296d6b4ae874e260
 
 <body>
     <main>
-        <h1>あのね。</h1>
-        <p>あのね。直接言うのは恥ずかしくて言えないんだけど、</p>
-        <p>本当はいつもありがとうって思っているよ。</p>
+        <div class="top">
+            <img class="family" src="res/family.jpg" />
+            <h1>あのね。</h1>
+                <p id="messeage01">直接言うのは恥ずかしくて言えないんだけど、</p>
+                <p id="messeage02">本当はいつもありがとうって思っているよ。</p>
+
+            <div class="btn-all">
+                <div class="btn btn-memberSetting"><span>メンバー設定</span></div>
+                <div class="btn btn-login"><span> ログイン</span></div>
+                <div class="btn btn-usage"><span>使い方</span></div>
+            </div>
 
 
-        <div class="btn-all">
-            <div class="btn btn-memberSetting"><span>メンバー設定</span></div>
-            <div class="btn btn-login"><span> ログイン</span></div>
-            <div class="btn btn-usage"><span>使い方</span></div>
+            <p>aaa</p>
+
         </div>
-
-
-<p>aaa</p>
-
-
     </main>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

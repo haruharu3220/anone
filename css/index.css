@@ -1,34 +1,167 @@
-/*その他と主な共通部分は省略*/
+/* フォント候補
+(1)えり字
+http://v7.mine.nu/pysco/gallery/font/06.html
 
-.btn-all {
-    display: block
+(2)からかぜ
+https://enuoka.booth.pm/items/1219316
+
+(3)アオハルメーカー
+https://booth.pm/ja/items/3842233
+
+(4)TA恋心（Adobe Fonts） →有料でした(´；ω；`)ｳｩｩ
+https://fonts.adobe.com/fonts/ta-koigokoro#fonts-section */
+
+
+/* Webフォントを定義 */
+@font-face {
+    font-family: 'myfont';
+    /* フォント名 */
+
+    src: url('../res/aoharu-marker-mini.ttf') format('truetype');
+    src: url('../res/えり字.otf') format('truetype');
+    /* src: url('../res/DragonQuestFC.ttf') format('truetype'); */
+
 }
 
-.btn {
-    width: 50vw;
-    font-size: 2rem;
-    text-align: center;
-    font-weight:bold  ;
-    color: #fff;
-    border-radius: 100vh;
-    background-image: -webkit-linear-gradient(110deg, #e9defa 0%, #fbfcdb 100%);
-    background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
-    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-    margin: 30px;
+body {
+    font-family: myfont;
+    font-size: 48px;
+}
+
+
+h1 {
     color: red;
+    /* font-weight: bold; */
+    font-weight: 900;
 }
 
-.btn a span {
-    background-image: -webkit-gradient(linear, left top, right top, from(#93a5cf), to(#e4efe9));
-    background-image: -webkit-linear-gradient(left, #93a5cf 0%, #e4efe9 100%);
-    background-image: linear-gradient(to right, #93a5cf 0%, #e4efe9 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+
+.family {
+    /* filter: blur(); ~px: ぼかす（にじませる）具合 */
+    filter: blur(6px) brightness(1.1);
+    filter: blur(6px) brightness(0.9);
+    width: 100%;
+    height: 100%;
+}
+
+.top {
+    position: relative;
+    /*相対配置*/
+}
+
+.top h1,
+.top p,
+.top .btn {
+    position: absolute;
+    /*絶対配置*/
+    color: white;
+    /*文字は白に*/
+}
+
+
+.top h1 {
+    font-weight: bold;
+    /*太字に*/
+    font-size: 3em;
+    /*サイズ2倍*/
+    top: 20%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.top #messeage01 {
+    position: absolute;
+    /*絶対配置*/
+    font-weight: bold;
+    /*太字に*/
+    font-size: 1em;
+    /*サイズ2倍*/
+    top: 53%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    margin: 0;
+    padding: 0;
+}
+
+.top #messeage02 {
+    position: absolute;
+    /*絶対配置*/
+    font-weight: bold;
+    /*太字に*/
+    font-size: 1em;
+    /*サイズ2倍*/
+    top: 60%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    margin: 0;
+    padding: 0;
+}
+
+.top .btn {
+    width: 30vw;
+    font-size: 1em;
+    /*サイズ2倍*/
+}
+
+.top .btn-memberSetting {
+    position: absolute;
+    /*絶対配置*/
+    font-weight: bold;
+    /*太字に*/
+    font-size: 36px;
+    /*サイズ2倍*/
+    top: 70%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    /* width: 70vw; */
+    margin: 0;
+    padding: 0;
+}
+
+.top .btn-login {
+    position: absolute;
+    /*絶対配置*/
+    font-weight: bold;
+    /*太字に*/
+    font-size: 36px;
+    top: 80%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    /* width: 70vw; */
+    margin: 0;
+    padding: 0;
 
 }
 
-.btn:hover {
-    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
+.top .btn-usage {
+    position: absolute;
+    /*絶対配置*/
+    font-weight: bold;
+    /*太字に*/
+    font-size: 36px;
+    /*サイズ2倍*/
+    top: 90%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    /* width: 70vw; */
+    margin: 0;
+    padding: 0;
 }
