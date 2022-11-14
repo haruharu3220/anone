@@ -43,8 +43,13 @@ $(".btn-save").on("click", function () {
 
 
 $("body").on("click",".member", function () {
-  alert("押したよ"+ $(this).attr('class') );
-  console.log("aaa");
+  const test = $(this).attr('class');
+  console.log("押したよtest|||"+ test );
+ const selectMember = $("." + test).val();
+ console.log("押したよtest2"+ selectMember );
+
+  console.log("押したよ"+ $(this).attr('class') );
+  console.log("押したよ"+ selectMember );
 });
 
 
@@ -62,12 +67,14 @@ $(".btn-getter").on("click", function () {
 
 });
 
-
-
-
 $(".btn-returnTop").on("click", function () {
   console.log("TOPに戻るボタン押したよ");
   location.href = "../index.html";
+});
+
+$(".btn-login").on("click", function () {
+  console.log("loginボタン押したよ");
+  location.href = "../html/map.html";
 });
 
 
