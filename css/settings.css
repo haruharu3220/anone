@@ -14,23 +14,21 @@ https://fonts.adobe.com/fonts/ta-koigokoro#fonts-section */
 
 /* Webフォントを定義 */
 @font-face {
-  font-family: 'myfont';/* フォント名 */
+  font-family: 'myfont';
+  /* フォント名 */
 
   src: url('../res/aoharu-marker-mini.ttf') format('truetype');
-
+  src: url('../res/えり字.otf') format('truetype');
   /* src: url('../res/DragonQuestFC.ttf') format('truetype'); */
 
 }
 
 
 
-
 body {
-  background-color: aquamarine;
   font-family: myfont;
-  /* font-family: ta-koigokoro, sans-serif; */
+  font-size: 48px;
 }
-
 
 .inputMemberName .inputMemberInput{
   background: white;

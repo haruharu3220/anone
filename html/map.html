@@ -1,5 +1,23 @@
+<!-- 
+■モーダルウィンドウの作り方
+https://coco-factory.jp/ugokuweb/move01/9-6-3/
+
+
+
+
+■モーダル
+https://bonoponz.hatenablog.com/entry/2020/09/17/%E3%80%90Laravel/jQuery%E3%80%91form%E3%81%AE%E7%A2%BA%E8%AA%8D%E7%94%BB%E9%9D%A2%E3%82%92%E3%83%A2%E3%83%BC%E3%83%80%E3%83%AB%E3%81%A7%E5%87%BA%E3%81%99
+
+
+
+
+ -->
+
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,17 +25,56 @@
 
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/sanitize.css">
-    
+
     <link rel="stylesheet" href="../css/button.css">
+    <link rel="stylesheet" href="../css/map.css">
+
 
     <title>あのね。</title>
+
+
+
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">
+    <link rel="stylesheet" type="text/css" href="css/9-6-3.css">
 </head>
+
 <body>
     <h1>マップ画面</h1>
 
-    <div class= "remainingmMessage"></div>
-    
-    
+    <div class="remainingmMessage"></div>
+
+    <div class="popup" id="js-popup">
+        <div class="popup-inner">
+          <div class="close-btn" id="js-close-btn"><i class="fas fa-times"></i></div>
+          <div class="Form">
+            <div class="Form-Item">
+              <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>氏名</p>
+              <input type="text" class="Form-Item-Input" placeholder="例）山田太郎">
+            </div>
+            <div class="Form-Item">
+              <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>電話番号</p>
+              <input type="text" class="Form-Item-Input" placeholder="例）000-0000-0000">
+            </div>
+            <div class="Form-Item">
+              <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>メールアドレス</p>
+              <input type="email" class="Form-Item-Input" placeholder="例）example@gmail.com">
+            </div>
+            <div class="Form-Item">
+              <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>お問い合わせ内容</p>
+              <textarea class="Form-Item-Textarea"></textarea>
+            </div>
+            <input type="submit" class="Form-Btn" value="送信する">
+          </div>
+        </div>
+        <div class="black-background" id="js-black-bg"></div>
+      </div>
+      <button id="js-show-popup">Show Popup</button>
+
+
+
+
+
     <div class="btn btn-comment"><span>コメント</span></div>
     <div class="btn btn-logout"><span>ログアウト</span></div>
     <div class="btn btn-returnTop"><span>戻る</span></div>
@@ -25,6 +82,9 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
     <script src="../js/map.js"></script>
+
 </body>
+
 </html>
