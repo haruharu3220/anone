@@ -13,11 +13,33 @@ mapArea.width = 500;	//canvasの横幅
 mapArea.height = 200;	//canvasの縦幅
 
 //コンテキストを取得
-var mapArea = mapArea.getContext('2d');
+var mapArea2D = mapArea.getContext('2d');
 
 //マップ領域の座標を管理
 let mapAreaX = 0; //クリックしたX座標
 let mapAreaY = 0; //クリックしたY座標
+
+$("#mapArea").on("click", function (e) {
+    console.log("クリックしたよ");
+    // クリック位置の座標計算（canvasの左上を基準。-2ずつしているのはborderの分）
+
+    var rect = e.target.getBoundingClientRect();
+    makeMapAreaX = e.clientX - Math.floor(rect.left);
+    makeMapAreaY = e.clientY - Math.floor(rect.top);
+
+    console.log("X=" + makeMapAreaX);
+    console.log("Y=" + makeMapAreaY);
+
+    const position = {
+        X: makeMapAreaX,
+        Y: makeMapAreaY
+    }
+    const jsonPosition  = JSON.stringify(position);
+    localStorage.setItem("position", jsonPosition);
+
+});
+
+
 
 $(".btn-comment").on("click", function () {
     console.log("コメントボタン押したよ");
@@ -56,6 +78,6 @@ function popupImage() {
         elem.addEventListener('click', function () {
             popup.classList.toggle('is-show'); //https://qiita.com/tomokichi_ruby/items/2460c5902d19b81cace5
         });
-  }
+    }
 }
 popupImage();
