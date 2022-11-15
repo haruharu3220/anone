@@ -2,6 +2,10 @@
 // https://qiita.com/tomokichi_ruby/items/2460c5902d19b81cace5
 
 
+
+
+
+
 //マップ領域の座標を管理
 let mapAreaX = 0; //クリックしたX座標
 let mapAreaY = 0; //クリックしたY座標
@@ -79,3 +83,7 @@ function popupImage() {
     }
 }
 popupImage();
+
+
+
+
