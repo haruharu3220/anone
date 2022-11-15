@@ -1,3 +1,12 @@
+// ■classListの使い方まとめ→モーダルの実装で便利
+// https://qiita.com/tomokichi_ruby/items/2460c5902d19b81cace5
+// 
+// 
+// 
+// 
+// 
+// 
+
 $(".btn-comment").on("click",function(){
     console.log("コメントボタン押したよ");
 
@@ -33,8 +42,7 @@ function popupImage() {
     function closePopUp(elem) {
       if(!elem) return;
       elem.addEventListener('click', function() {
-        popup.classList.toggle('is-show');
-      });
+        popup.classList.toggle('is-show'); //https://qiita.com/tomokichi_ruby/items/2460c5902d19b81cace5
     }
   }
   popupImage();
