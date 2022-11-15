@@ -41,51 +41,77 @@ addEventListener("keyup", keyupfunc02, false);
 
 //パックマンがmoveが0より大きい場合は、4pxずつ移動を続ける
 function move(Object) {
-    if(Object.move === 0) {
-        Object.move = 32; 
-        // console.log("動け！");
+    if (Object.move === 0) {
+        Object.move = 32;
+
     }
-        if (Object.move > 0) {
-    console.log("おーい");
-    Object.move -= 4;
-    if (key.push === 'left') Object.x -= 4;
-    if (key.push === 'up') {
-        Object.y -= 4;
-        // console.log("↑↑↑↑↑↑");
+    if (Object.move > 0) {
+        Object.move -= 4;
+        if (key.push === 'left') Object.x -= 4;
+        if (key.push === 'up') {
+            Object.y -= 4;
+
+        }
+        if (key.push === 'right') Object.x += 4;
+        if (key.push === 'down') Object.y += 4;
+
     }
-    if (key.push === 'right') Object.x += 4;
-    if (key.push === 'down') Object.y += 4;
-    // console.log("X="+ Object.x );
-    // console.log("Y="+ Object.y );
-     } 
+    mapArea2D.fillStyle = "lightpink";
+    mapArea2D.fillRect(0, 0, mapArea.width, mapArea.height);
 }
 
 //キーボードが押されたときに呼び出される関数
 function keydownfunc02(event) {
     var key_code = event.keyCode;
-    // console.log("キーボード押したよ");
-    if (key_code === 37) key.left = true;
+
+    if (key_code === 37) {
+        key.left = true;
+        key.push = "left"
+    }
     if (key_code === 38) {
-        console.log("↑押したよ");
         key.up = true;
         key.push = "up"
     }
-        if (key_code === 39) key.right = true;
-    if (key_code === 40) key.down = true;
+    if (key_code === 39) {
+        key.right = true;
+        key.push = "right";
+    }
+    if (key_code === 40) {
+        key.down = true;
+        key.push = "down";
+    }
     event.preventDefault();
 }
 
 //キーボードが放されたときに呼び出される関数
 function keyupfunc02(event) {
     var key_code = event.keyCode;
-    console.log("キーボード話したよ");
-    if (key_code === 37) key.left = false;
+    if (key_code === 37) {
+        key.left = false;
+        key.push = "";
+    }
     if (key_code === 38) {
         key.up = false;
-        key.push = ""
+        key.push = "";
     }
-        if (key_code === 39) key.right = false;
-    if (key_code === 40) key.down = false;
+    if (key_code === 39) {
+        key.right = false;
+        key.push = "";
+    }
+    if (key_code === 40) {
+        key.down = false;
+        key.push = "";
+    }
+}
+
+//エンターキー
+addEventListener('keydown', openMeeageBox);
+function openMeeageBox(e) {
+    if (e.keyCode === 13) {
+        console.log("goast.x =" + goast.x + "goast.y" + goast.y );
+        popupImage();
+    }
+    
 }
 
 

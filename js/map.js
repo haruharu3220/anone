@@ -77,8 +77,10 @@ function popupImage() {
     closePopUp(showBtn);
     function closePopUp(elem) {
         if (!elem) return;
-        elem.addEventListener('click', function () {
-            popup.classList.toggle('is-show'); //https://qiita.com/tomokichi_ruby/items/2460c5902d19b81cace5
+       elem.addEventListener('click', function () {
+       
+        //https://qiita.com/tomokichi_ruby/items/2460c5902d19b81cace5
+            popup.classList.toggle('is-show'); 
         });
     }
 }
