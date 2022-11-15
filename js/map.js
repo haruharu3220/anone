@@ -18,8 +18,8 @@ var mapArea2D = mapArea.getContext('2d');
 //マップ領域の座標を管理
 let mapAreaX = 0; //クリックしたX座標
 let mapAreaY = 0; //クリックしたY座標
-let positions=[];
-let i=0;
+let positions = [];
+let i = 0;
 $("#mapArea").on("click", function (e) {
     console.log("クリックしたよ");
     // クリック位置の座標計算（canvasの左上を基準。-2ずつしているのはborderの分）
@@ -35,11 +35,15 @@ $("#mapArea").on("click", function (e) {
         X: makeMapAreaX,
         Y: makeMapAreaY
     }
-    positions[i]=position;
+    positions[i] = position;
     i++
-    const jsonPositions  = JSON.stringify(positions);
-    localStorage.setItem("position", jsonPositions);
+    const jsonPositions = JSON.stringify(positions);
+    localStorage.setItem("positions", jsonPositions);
 
+    //デバッグ用
+    const jsonData = localStorage.getItem("positions");
+    const data = JSON.parse(jsonData);
+    console.log(data[2].X + "←data[2].X読み取ったよ～");
 });
 
 
