@@ -1,19 +1,6 @@
 // ■classListの使い方まとめ→モーダルの実装で便利
 // https://qiita.com/tomokichi_ruby/items/2460c5902d19b81cace5
-// 
-// 
-// 
-// 
-// 
-// 
 
-
-let mapArea = document.getElementById('mapArea');
-mapArea.width = 500;	//canvasの横幅
-mapArea.height = 200;	//canvasの縦幅
-
-//コンテキストを取得
-var mapArea2D = mapArea.getContext('2d');
 
 //マップ領域の座標を管理
 let mapAreaX = 0; //クリックしたX座標
@@ -36,14 +23,18 @@ $("#mapArea").on("click", function (e) {
         Y: makeMapAreaY
     }
     positions[i] = position;
-    i++
+    i++;
     const jsonPositions = JSON.stringify(positions);
     localStorage.setItem("positions", jsonPositions);
 
     //デバッグ用
     const jsonData = localStorage.getItem("positions");
     const data = JSON.parse(jsonData);
-    console.log(data[2].X + "←data[2].X読み取ったよ～");
+
+//const XY = String(data[0].X)+String(data[0].Y);
+//console.log(XY + "←XY連結した文字列だよ～");
+
+   // console.log(data[2].X + "←data[2].X読み取ったよ～");
 });
 
 
