@@ -7,6 +7,18 @@
 // 
 // 
 
+
+let mapArea = document.getElementById('mapArea');
+mapArea.width = 500;	//canvasの横幅
+mapArea.height = 200;	//canvasの縦幅
+
+//コンテキストを取得
+var mapArea = mapArea.getContext('2d');
+
+//マップ領域の座標を管理
+let mapAreaX = 0; //クリックしたX座標
+let mapAreaY = 0; //クリックしたY座標
+
 $(".btn-comment").on("click", function () {
     console.log("コメントボタン押したよ");
 
