@@ -9,9 +9,13 @@ https://coco-factory.jp/ugokuweb/move01/9-6-3/
 https://bonoponz.hatenablog.com/entry/2020/09/17/%E3%80%90Laravel/jQuery%E3%80%91form%E3%81%AE%E7%A2%BA%E8%AA%8D%E7%94%BB%E9%9D%A2%E3%82%92%E3%83%A2%E3%83%BC%E3%83%80%E3%83%AB%E3%81%A7%E5%87%BA%E3%81%99
 
 
+■モーダルウィンドウで作成してみた
+https://emotopi.com/%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%82%92%E3%83%A2%E3%83%BC%E3%83%80%E3%83%AB%E3%82%A6%E3%82%A3%E3%83%B3%E3%83%89%E3%82%A6%E3%81%A7%E4%BD%9C%E6%88%90/
 
 
- -->
+■Font Awesome アイコンフォント一覧　使い方　★★
+https://johobase.com/font-awesome-icon-font-list-free/
+-->
 
 
 
@@ -37,6 +41,10 @@ https://bonoponz.hatenablog.com/entry/2020/09/17/%E3%80%90Laravel/jQuery%E3%80%9
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">
     <link rel="stylesheet" type="text/css" href="css/9-6-3.css">
+
+
+    <!-- CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
 </head>
 
 <body>
@@ -46,30 +54,39 @@ https://bonoponz.hatenablog.com/entry/2020/09/17/%E3%80%90Laravel/jQuery%E3%80%9
 
     <div class="popup" id="js-popup">
         <div class="popup-inner">
-          <div class="close-btn" id="js-close-btn"><i class="fas fa-times"></i></div>
-          <div class="Form">
-            <div class="Form-Item">
-              <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>氏名</p>
-              <input type="text" class="Form-Item-Input" placeholder="例）山田太郎">
+            <div class="close-btn" id="js-close-btn"><i class="fas fa-times"></i></div>
+            <div class="Form">
+                <div class="Form-Item">
+                    <p class="Form-Item-Label"><span class="Form-Item-Label-Required">宛先</span>
+                        <select name="example2" size="5">
+                            <option value="">5つの選択肢を表示</option>
+                            <option>選択肢のサンプル2</option>
+                            <option>選択肢のサンプル3</option>
+                            <option>選択肢のサンプル4</option>
+                            <option>選択肢のサンプル5</option>
+                            <option>選択肢のサンプル6</option>
+                            <option>選択肢のサンプル7</option>
+                    </p>
+                    <input type="text" class="Form-Item-Input" placeholder="例）山田太郎">
+                </div>
+                <div class="Form-Item">
+                    <p class="Form-Item-Label"><span class="Form-Item-Label-Required">いつ</span>日にち</p>
+                    <input type="text" class="Form-Item-Input" placeholder="例）2022/11/15">
+                </div>
+                <div class="Form-Item">
+                    <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>種類</p>
+                    <input type="email" class="Form-Item-Input" placeholder="例）example@gmail.com">
+                </div>
+                <div class="Form-Item">
+                    <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>メッセージ</p>
+                    <textarea class="Form-Item-Textarea"></textarea>
+                </div>
+                <input type="submit" class="Form-Btn" value="置く">
             </div>
-            <div class="Form-Item">
-              <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>電話番号</p>
-              <input type="text" class="Form-Item-Input" placeholder="例）000-0000-0000">
-            </div>
-            <div class="Form-Item">
-              <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>メールアドレス</p>
-              <input type="email" class="Form-Item-Input" placeholder="例）example@gmail.com">
-            </div>
-            <div class="Form-Item">
-              <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>お問い合わせ内容</p>
-              <textarea class="Form-Item-Textarea"></textarea>
-            </div>
-            <input type="submit" class="Form-Btn" value="送信する">
-          </div>
         </div>
         <div class="black-background" id="js-black-bg"></div>
-      </div>
-      <button id="js-show-popup">Show Popup</button>
+    </div>
+    <button id="js-show-popup">Show Popup</button>
 
 
 
