@@ -90,32 +90,44 @@ https://johobase.com/font-awesome-icon-font-list-free/
     <button id="js-show-popup">Show Popup</button> -->
 
 
+    <!-- メッセージボックス -->
     <div class="messeageBox">
         <div class="messeageBoxTitlle">メッセージ</div>
-        <label for="messeageBoxWho">だれに</label>
-        <div class="inquiry">
-            <div class="messeageContent">
-                <dt>メッセージ</dt>
-                 <dd><textarea name="messeageContentArea" ></textarea></dd> 
-                 <!-- <dd><textarea name="messeageContent" id=""  class="detailForm"></textarea></dd>  -->
-                </div>
+        <div class="messeageContent">
+            <label for="messeageContentArea">メッセージ</label><br>
+            <textarea id="messeageContentArea" name="messeageContentArea"></textarea>
+        </div>
 
-            <select name="who" id="messeageBoxWho"></select>
+        <label for="messeageBoxWho">だれに</label><br>
+
+
+
+        <select name="who" id="messeageBoxWho"></select>
+        <option value=0>だれにメッセージを送りますか</option>
+        <option value=1>サンプル1</option>
+        <option value=2>サンプル2</option>
+        <option value=3>サンプル3</option>
+        </select>
+
+        <label for="messeageBoxWhen">いつから</label>
+        <select name="when" id="messeageBoxWhen">
             <option value=0>だれにメッセージを送りますか</option>
             <option value=1>サンプル1</option>
             <option value=2>サンプル2</option>
             <option value=3>サンプル3</option>
-            </select>
+        </select>
 
-            <label for="messeageBoxWhen">いつから</label>
-            <select name="when" id="messeageBoxWhen">
-                <option value=0>だれにメッセージを送りますか</option>
-                <option value=1>サンプル1</option>
-                <option value=2>サンプル2</option>
-                <option value=3>サンプル3</option>
-            </select>
-        </div>
 
+        <label for="messeageBoxType">タイプ</label>
+        <select name="when" id="messeageBoxType">
+            <option value=0>メッセージのタイプはなんですか</option>
+            <option value=1>フリー</option>
+            <option value=2>依頼</option>
+            <option value=3>相談</option>
+            <option value=3>情報共有</option>
+        </select>
+
+        <div class="btn btn-comment"><span>置く</span></div>
     </div>
 
 
@@ -136,7 +148,7 @@ https://johobase.com/font-awesome-icon-font-list-free/
             <textarea name="contact">お問い合わせ内容を入力してください。</textarea>
         </div>
     </form>
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
 
