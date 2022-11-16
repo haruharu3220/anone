@@ -8,18 +8,20 @@ let mapAreaY = 0; //クリックしたY座標
 let positions = [];
 let i = 0;
 
-function countRemainingmMessage(){
-    
+function countRemainingmMessage() {
+
 
 }
 selectedMemberDisplay();
 //選択中のキャラを表示
-function selectedMemberDisplay(){ 
+function selectedMemberDisplay() {
     const Mumber = localStorage.getItem("selectMumber");
     const jsonData2 = localStorage.getItem("memo");
     const data = JSON.parse(jsonData2);
     $(".selectedMumer").append(data[Mumber]);
-  }
+
+    return(data[Mumber]);
+}
 
 
 $("#mapArea").on("click", function (e) {
@@ -46,10 +48,10 @@ $("#mapArea").on("click", function (e) {
     const jsonData = localStorage.getItem("positions");
     const data = JSON.parse(jsonData);
 
-//const XY = String(data[0].X)+String(data[0].Y);
-//console.log(XY + "←XY連結した文字列だよ～");
+    //const XY = String(data[0].X)+String(data[0].Y);
+    //console.log(XY + "←XY連結した文字列だよ～");
 
-   // console.log(data[2].X + "←data[2].X読み取ったよ～");
+    // console.log(data[2].X + "←data[2].X読み取ったよ～");
 });
 
 
@@ -84,9 +86,9 @@ function popupImage() {
     var closeBtn = document.getElementById('js-close-btn');
     var showBtn = document.getElementById('js-show-popup');
 
-console.log(blackBg);
-console.log(closeBtn);
-console.log(showBtn);
+    console.log(blackBg);
+    console.log(closeBtn);
+    console.log(showBtn);
 
 
 
@@ -95,10 +97,10 @@ console.log(showBtn);
     closePopUp(showBtn);
     function closePopUp(elem) {
         if (!elem) return;
-       elem.addEventListener('click', function () {
-       
-        //https://qiita.com/tomokichi_ruby/items/2460c5902d19b81cace5
-            popup.classList.toggle('is-show'); 
+        elem.addEventListener('click', function () {
+
+            //https://qiita.com/tomokichi_ruby/items/2460c5902d19b81cace5
+            popup.classList.toggle('is-show');
         });
     }
 }
@@ -106,4 +108,41 @@ popupImage();
 
 
 
+//置くボタンクリック
+$(".commentDone").on("click", function () {
+    console.log("置くをボタン押したよ");
+    // console.log($("[name=who]").val());
+    // console.log(("#messeageBoxWho").val());
+    // console.log($("[name=when]").val());
+    // console.log($("[type]").val());
 
+
+    const messeage = {
+        address:$("[name=who]").val(),          //誰宛
+        sender:localStorage.getItem("selectMumber"),
+        //sender:data[Mumber],                    //誰から
+        sendDate: $("[name=when]").val(),       //いつ開封するか
+        type:$("[name=type]").val(),                 //タイプ
+        X:goast.x,                              //X座標
+        Y:goast.y,                              //Y座標
+       // messeage:("#messeageBoxWho").val(),                     //メッセージデバッグ用
+        messeage:"aaa"                          //メッセージデバッグ用
+    }
+    // console.log(messeage);
+
+    data=[];
+    if (localStorage.getItem("messeages")) {
+        const jsonData = localStorage.getItem("messeages");
+        const data = JSON.parse(jsonData);
+        data[data.length] = messeage;
+        const jsonData2 = JSON.stringify(data);
+        localStorage.setItem("messeages", jsonData2);
+    }else{
+        console.log("あこ"+data.length-1);
+        data[0] = messeage;
+        const jsonData2 = JSON.stringify(data);
+        localStorage.setItem("messeages", jsonData2);
+    }
+
+    messeageBox.style.display = 'none';
+});
