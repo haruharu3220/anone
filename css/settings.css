@@ -10,3 +10,11 @@ color: pink;
 
 }
 
+.inputMember{
+  display: flex;
+}
+
+.inputMenberInput{
+  background-color: aqua;
+  
+}
