@@ -12,9 +12,14 @@ function countRemainingmMessage(){
     
 
 }
-
-
-
+selectedMemberDisplay();
+//選択中のキャラを表示
+function selectedMemberDisplay(){ 
+    const Mumber = localStorage.getItem("selectMumber");
+    const jsonData2 = localStorage.getItem("memo");
+    const data = JSON.parse(jsonData2);
+    $(".selectedMumer").append(data[Mumber]);
+  }
 
 
 $("#mapArea").on("click", function (e) {
