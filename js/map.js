@@ -67,10 +67,17 @@ $(".btn-history").on("click", function () {
 
 function popupImage() {
     var popup = document.getElementById('js-popup');
+    console.log(popup);
     if (!popup) return;
     var blackBg = document.getElementById('js-black-bg');
     var closeBtn = document.getElementById('js-close-btn');
     var showBtn = document.getElementById('js-show-popup');
+
+console.log(blackBg);
+console.log(closeBtn);
+console.log(showBtn);
+
+
 
     closePopUp(blackBg);
     closePopUp(closeBtn);

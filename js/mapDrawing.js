@@ -109,8 +109,9 @@ addEventListener('keydown', openMeeageBox);
 function openMeeageBox(e) {
     if (e.keyCode === 13) {
         console.log("goast.x =" + goast.x + "goast.y" + goast.y );
-        popupImage();
+       // popup.classList.toggle('is-show'); 
     }
+
     
 }
 

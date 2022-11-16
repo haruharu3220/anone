@@ -50,8 +50,9 @@ https://johobase.com/font-awesome-icon-font-list-free/
 <body>
     <h1>マップ画面</h1>
 
-    <div class="remainingmMessage"></div>
-
+    <div class="remainingmMessage"> "aaa"</div>
+    <!-- 
+    ダイアログ
     <div class="popup" id="js-popup">
         <div class="popup-inner">
             <div class="close-btn" id="js-close-btn"><i class="fas fa-times"></i></div>
@@ -86,7 +87,36 @@ https://johobase.com/font-awesome-icon-font-list-free/
         </div>
         <div class="black-background" id="js-black-bg"></div>
     </div>
-    <button id="js-show-popup">Show Popup</button>
+    <button id="js-show-popup">Show Popup</button> -->
+
+
+    <div class="messeageBox">
+        <div class="messeageBoxTitlle">メッセージ</div>
+        <label for="messeageBoxWho">だれに</label>
+        <div class="inquiry">
+            <div class="messeageContent">
+                <dt>メッセージ</dt>
+                 <dd><textarea name="messeageContentArea" ></textarea></dd> 
+                 <!-- <dd><textarea name="messeageContent" id=""  class="detailForm"></textarea></dd>  -->
+                </div>
+
+            <select name="who" id="messeageBoxWho"></select>
+            <option value=0>だれにメッセージを送りますか</option>
+            <option value=1>サンプル1</option>
+            <option value=2>サンプル2</option>
+            <option value=3>サンプル3</option>
+            </select>
+
+            <label for="messeageBoxWhen">いつから</label>
+            <select name="when" id="messeageBoxWhen">
+                <option value=0>だれにメッセージを送りますか</option>
+                <option value=1>サンプル1</option>
+                <option value=2>サンプル2</option>
+                <option value=3>サンプル3</option>
+            </select>
+        </div>
+
+    </div>
 
 
     <div><canvas id="mapArea"></canvas></div>
@@ -98,12 +128,21 @@ https://johobase.com/font-awesome-icon-font-list-free/
     <div class="btn btn-history"><span>履歴</span></div>
 
 
+    <textarea>テキストを入力してください</textarea>
+
+    <form method="post">
+        <div>
+            <label for="contact">お問い合わせ内容</label>
+            <textarea name="contact">お問い合わせ内容を入力してください。</textarea>
+        </div>
+    </form>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
-    
+
     <script src="../js/map.js"></script>
     <script src="../js/mapDrawing.js"></script>
-    
+
 </body>
 
 </html>
