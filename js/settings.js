@@ -180,24 +180,20 @@ $(".fa-square-plus").on("click", function () {
   }
 });
 
-
+//キャラ選択ボタン→各キャラ分作成必要あり
 $("body").on("click", ".style-li1", function () {
 
   console.log("押したよtest|||"+  $(".style-li1").text());
   const jsonData = localStorage.getItem("memo");
   const data = JSON.parse(jsonData);
-  for(let i=0;data.length;i++){
-    console.log("ここ");
+  console.log(data);
+  console.log(data.length);
+  for(let i=0;i<data.length;i++){
+    // console.log("ここ");
     if(data[i]===$(".style-li1").text()){
       localStorage.setItem("selectMumber", i);
 
     }
   }
-
-});
-
-$("body").on("click", ".style-li2", function () {
-
-  console.log("押したよtest|||"+  $(".style-li2").text());
 
 });
