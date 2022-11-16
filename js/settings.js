@@ -131,3 +131,18 @@ FORM.on("focusout", function (e) {
 
 //Tips
 //if (!localStorage.hasOwnProperty("mumberData")) {
+
+
+
+  $(".btn-login").on("click", function () {
+    console.log("loginボタン押したよ");
+    location.href = "../html/map.html";
+  });
+
+
+  $(".fa-pen-to-square").on("click", function () {
+    console.log("loginボタン押したよ");
+    location.href = "../html/map.html";
+  });
+
+ 
