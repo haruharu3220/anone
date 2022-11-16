@@ -195,8 +195,7 @@ $("body").on("click", ".style-li1", function () {
 
     }
   }
+  //ログインモーダル表示
   loginModal.style.display = 'block';
   $(".selectedMumer").append($(".style-li1").text());
-
-
 });

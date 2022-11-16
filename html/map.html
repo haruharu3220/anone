@@ -51,7 +51,7 @@ https://johobase.com/font-awesome-icon-font-list-free/
 
 <body>
     <h1>マップ画面</h1>
-
+    <div class="selectedMumer"></div>
     <div class="remainingmMessage"> "aaa"</div>
     <!-- 
     ダイアログ
@@ -94,6 +94,7 @@ https://johobase.com/font-awesome-icon-font-list-free/
 
     <!-- メッセージボックス -->
     <div class="messeageBox">
+        <div class="modal-content">
         <div class="messeageBoxTitlle">メッセージ</div>
         <div class="messeageContent">
             <label for="messeageContentArea">メッセージ</label><br>
@@ -101,25 +102,22 @@ https://johobase.com/font-awesome-icon-font-list-free/
         </div>
 
         <label for="messeageBoxWho">だれに</label><br>
-
-
-
-        <select name="who" id="messeageBoxWho"></select>
+        <select name="who" id="messeageBoxWho">
         <option value=0>だれにメッセージを送りますか</option>
         <option value=1>サンプル1</option>
         <option value=2>サンプル2</option>
         <option value=3>サンプル3</option>
         </select>
-
+        <br>
         <label for="messeageBoxWhen">いつから</label>
         <select name="when" id="messeageBoxWhen">
-            <option value=0>だれにメッセージを送りますか</option>
+            <option value=0>いつメッセージを送りますか</option>
             <option value=1>サンプル1</option>
             <option value=2>サンプル2</option>
             <option value=3>サンプル3</option>
         </select>
 
-
+        <br>
         <label for="messeageBoxType">タイプ</label>
         <select name="when" id="messeageBoxType">
             <option value=0>メッセージのタイプはなんですか</option>
@@ -130,6 +128,7 @@ https://johobase.com/font-awesome-icon-font-list-free/
         </select>
 
         <div class="btn btn-comment"><span>置く</span></div>
+    </div>
     </div>
 
 
