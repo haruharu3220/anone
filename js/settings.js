@@ -144,7 +144,7 @@ $(".fa-square-plus").on("click", function () {
 
   //下に名前を表示
   $('ul').append("<li>" + $(".inputMenberInput").val() + "</li>");
-  
+
   // https://www.webopixel.net/javascript/216.html
   var i = 1;
   $('li').each(function () {
@@ -183,17 +183,20 @@ $(".fa-square-plus").on("click", function () {
 //キャラ選択ボタン→各キャラ分作成必要あり
 $("body").on("click", ".style-li1", function () {
 
-  console.log("押したよtest|||"+  $(".style-li1").text());
+  console.log("押したよtest|||" + $(".style-li1").text());
   const jsonData = localStorage.getItem("memo");
   const data = JSON.parse(jsonData);
   console.log(data);
   console.log(data.length);
-  for(let i=0;i<data.length;i++){
+  for (let i = 0; i < data.length; i++) {
     // console.log("ここ");
-    if(data[i]===$(".style-li1").text()){
+    if (data[i] === $(".style-li1").text()) {
       localStorage.setItem("selectMumber", i);
 
     }
   }
+  loginModal.style.display = 'block';
+  $(".selectedMumer").append($(".style-li1").text());
+
 
 });

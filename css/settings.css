@@ -16,5 +16,39 @@ color: pink;
 
 .inputMenberInput{
   background-color: aqua;
-  
+
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(77, 77, 77, 0.5);
+}
+
+.modal-content {
+  border: 2px solid white;
+  background-color: black;
+  margin: 20% auto;
+  width: 50%;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+  animation-name: modalopen;
+  animation-duration: 1s;
+}
+
+/* モーダルのボディをデザイン */
+.modal-body {
+  background-color:white;
+  height: 500px;
+  border: 2px solid white;
+}
+
+.modal-body p {
+  margin: 10px;
+  font-size: 32px;
 }
