@@ -115,8 +115,6 @@ $(".commentDone").on("click", function () {
     // console.log(("#messeageBoxWho").val());
     // console.log($("[name=when]").val());
     // console.log($("[type]").val());
-
-
     const messeage = {
         address:$("[name=who]").val(),          //誰宛
         sender:localStorage.getItem("selectMumber"),
@@ -146,3 +144,24 @@ $(".commentDone").on("click", function () {
 
     messeageBox.style.display = 'none';
 });
+
+
+putMessega();
+function putMessega(){
+    const jsonData = localStorage.getItem("messeages");
+    const data = JSON.parse(jsonData);
+
+    for(let i=0; i<data.length ; i++){
+        // if(localStorage.getItem("selectMumber")=== data[i].address){
+
+            alert("メッセージが届いているよ");
+            alert(data[i].sender +"さんから届きました。");
+            alert(data[i].type +"です");
+            alert(data[i].messeage);
+
+        // }
+    
+    }
+    
+
+}
