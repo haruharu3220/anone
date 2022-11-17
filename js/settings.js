@@ -153,7 +153,7 @@ $(".fa-square-plus").on("click", function () {
   });
 
 
-  // $('ul').append("<li><div><i class=\"fa-regular fa-pen-to-square fa-xl\"></i></div></li>");
+  $('ul').append("<li><div><i class=\"fa-regular fa-pen-to-square fa-xl\"></i></div></li>");
   // $('ul').append("<li><div><i class=\"fa-regular fa-circle-xmark fa-xl\"></i></div></li>");
 
   // https://iwb.jp/jquery-append-dom-nest/

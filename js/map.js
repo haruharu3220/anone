@@ -20,7 +20,7 @@ function selectedMemberDisplay() {
     const data = JSON.parse(jsonData2);
     $(".selectedMumer").append(data[Mumber]);
 
-    return(data[Mumber]);
+    return (data[Mumber]);
 }
 
 
@@ -116,27 +116,26 @@ $(".commentDone").on("click", function () {
     // console.log($("[name=when]").val());
     // console.log($("[type]").val());
     const messeage = {
-        address:$("[name=who]").val(),          //誰宛
-        sender:localStorage.getItem("selectMumber"),
+        address: $("[name=who]").val(),          //誰宛
+        sender: localStorage.getItem("selectMumber"),
         //sender:data[Mumber],                    //誰から
         sendDate: $("[name=when]").val(),       //いつ開封するか
-        type:$("[name=type]").val(),                 //タイプ
-        X:goast.x,                              //X座標
-        Y:goast.y,                              //Y座標
-       // messeage:("#messeageBoxWho").val(),                     //メッセージデバッグ用
-        messeage:"aaa"                          //メッセージデバッグ用
+        type: $("[name=type]").val(),                 //タイプ
+        X: goast.x,                              //X座標
+        Y: goast.y,                              //Y座標
+        // messeage:("#messeageBoxWho").val(),                     //メッセージデバッグ用
+        messeage: "aaa"                          //メッセージデバッグ用
     }
     // console.log(messeage);
 
-    data=[];
+    data = [];
     if (localStorage.getItem("messeages")) {
         const jsonData = localStorage.getItem("messeages");
         const data = JSON.parse(jsonData);
         data[data.length] = messeage;
         const jsonData2 = JSON.stringify(data);
         localStorage.setItem("messeages", jsonData2);
-    }else{
-        console.log("あこ"+data.length-1);
+    } else {
         data[0] = messeage;
         const jsonData2 = JSON.stringify(data);
         localStorage.setItem("messeages", jsonData2);
@@ -145,23 +144,26 @@ $(".commentDone").on("click", function () {
     messeageBox.style.display = 'none';
 });
 
-
+//メッセージが来ているか調査する関数
 putMessega();
-function putMessega(){
+function putMessega() {
+    console.log("メッセージが来ているか調査する関数");
     const jsonData = localStorage.getItem("messeages");
     const data = JSON.parse(jsonData);
+    // https://www.flatflag.nir87.com/select-2-1240#value-3
+    console.log(data[2]);
+    console.log(data[2].sender + "さんから届きました。");
 
-    for(let i=0; i<data.length ; i++){
+    console.log(data[2].type + "です");
+    console.log(data[2].messeage);
+    for (let i = 0; i < data.length; i++) {
         // if(localStorage.getItem("selectMumber")=== data[i].address){
 
-            alert("メッセージが届いているよ");
-            alert(data[i].sender +"さんから届きました。");
-            alert(data[i].type +"です");
-            alert(data[i].messeage);
-
+        // alert("メッセージが届いているよ");
+        // alert(data[i].sender +"さんから届きました。");
+        // alert(data[i].type +"です");
+        // alert(data[i].messeage);
         // }
-    
     }
-    
 
 }
