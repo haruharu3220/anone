@@ -63,10 +63,6 @@ $(".btn-history").on("click", function () {
 //置くボタンクリック
 $(".commentDone").on("click", function () {
     console.log("置くをボタン押したよ");
-    // console.log($("[name=who]").val());
-    // console.log(("#messeageBoxWho").val());
-    // console.log($("[name=when]").val());
-    // console.log($("[type]").val());
     const messeage = {
         address: $("[name=who] option:selected").text(),          //誰宛
         sender: localStorage.getItem("selectMumber"),//誰から

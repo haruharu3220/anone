@@ -27,7 +27,7 @@ key.push = '';
 
 //宝物のオブジェクト生成
 var treasure = new Image();
-treasure.src = '../res/pink.png';
+treasure.src = '../res/treasure.png';
 
 //背景画像のオブジェクトを作成
 var scenery04 = new Image();

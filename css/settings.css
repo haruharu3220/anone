@@ -1,3 +1,12 @@
+h1{
+  text-align: center;
+}
+
+.inputMember{
+  margin: 0 auto;
+  width: 50vw;
+  display: flex;
+}
 
 
 .inputMemberName .inputMemberInput{
@@ -5,14 +14,15 @@
 width: 100px;
 }
 
+#ueser{
+  font-family: myfont;
+}
+
 .fa-regular{
 color: pink;
 
 }
 
-.inputMember{
-  display: flex;
-}
 
 .inputMenberInput{
   background-color: aqua;
@@ -31,9 +41,14 @@ color: pink;
   background-color: rgba(77, 77, 77, 0.5);
 }
 
+.modal-body h2{
+  text-align: center;
+  font-size: 32px;
+} 
+
 .modal-content {
   border: 2px solid white;
-  background-color: black;
+  background-color: white;
   margin: 20% auto;
   width: 50%;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);

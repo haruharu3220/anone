@@ -29,6 +29,17 @@ body {
 }
 
 
+.navbar-brand{
+    font-size: 32px;
+}
+
+.navbar-nav{
+    margin-left: auto;
+}
+.sr-only{
+    color: pink;
+}
+
 h1 {
     color: red;
     /* font-weight: bold; */
