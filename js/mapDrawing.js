@@ -25,7 +25,11 @@ key.left = false;
 key.push = '';
 
 
-//キーボードのオブジェクトを作成
+//宝物のオブジェクト生成
+var treasure = new Image();
+treasure.src = '../res/pink.png';
+
+//背景画像のオブジェクトを作成
 var scenery04 = new Image();
 scenery04.src = '../res/scenery04.png';
 
@@ -41,10 +45,10 @@ function loop() {
     //console.log("無限ループ開始");
     move(goast);
     // mapArea2D.drawImage(scenery04,0, 0, 2048, 1364);
-
+    hasMeeages();
     mapArea2D.drawImage(goast.img, goast.x, goast.y, 32, 32);
     for (let i = 0; i < receivedMesseagePoint.length; i++) {
-        mapArea2D.drawImage(goast.img, receivedMesseagePoint[i][0], receivedMesseagePoint[i][1], 32, 32);
+        mapArea2D.drawImage(treasure, receivedMesseagePoint[i][0], receivedMesseagePoint[i][1], 32, 32);
     }
     // console.log("X="+ goast.x );
     // console.log("Y="+ goast.y );
@@ -61,9 +65,10 @@ function hasMeeages(e) {
     //自分宛てにメッセージがあればそれを表示
     if (localStorage.getItem("messeages")) {
         const jsonData = localStorage.getItem("messeages");
+        const jsonDataName = localStorage.getItem("selectedMumber");
         const data = JSON.parse(jsonData);
         for (let i = 0; i < data.length; i++) {
-            if (selectedMemberDisplay() === data[i].address) {
+            if (jsonDataName === data[i].address) {
                 receivedMesseagePoint.push([data[i].X, data[i].Y]);
             }
         }
@@ -157,6 +162,7 @@ function openMeeageBox(e) {
             console.log("★");
 
             const jsonData = localStorage.getItem("messeages");
+            const jsonDataName = localStorage.getItem("selectedMumber");
             const data = JSON.parse(jsonData);
             const Mumber = localStorage.getItem("selectMumber");
 
@@ -169,7 +175,7 @@ function openMeeageBox(e) {
                     console.log(Mumber);
 
                     //自分宛てなら
-                    if (selectedMemberDisplay() === data[i].address) {
+                    if (jsonDataName === data[i].address) {
                         console.log("★Step3");
                         alert("誰からのメッセージ？→" + data[i].sender);
                         alert("タイプは？→" + data[i].type);
