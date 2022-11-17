@@ -1,17 +1,17 @@
 
-$(".btn-memberSetting").on("click",function(){
+$("#btn-memberSetting").on("click",function(){
         console.log("設定ボタン押したよ");
     location.href="../html/settings.html";
 });
 
 
-$(".btn-login").on("click",function(){
+$("#btn-login").on("click",function(){
     console.log("設定ボタン押したよ");
 location.href="../html/login.html";
 });
 
 
-$(".btn-usage").on("click",function(){
+$("#btn-usage").on("click",function(){
     console.log("設定ボタン押したよ");
 location.href="../html/usage.html";
 });
