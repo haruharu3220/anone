@@ -1,4 +1,10 @@
 
+$("#btn-top").on("click",function(){
+    console.log("設定ボタン押したよ");
+location.href="../index.html";
+});
+
+
 $("#btn-memberSetting").on("click",function(){
         console.log("設定ボタン押したよ");
     location.href="../html/settings.html";

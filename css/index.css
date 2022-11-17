@@ -37,9 +37,7 @@ body {
 .navbar-nav{
     margin-left: auto;
 }
-.sr-only{
-    color: pink;
-}
+
 
 .top{
     font-weight: bold;
@@ -76,6 +74,7 @@ h1 {
 
 
 .top h1 {
+    position: absolute;
     font-weight: bold;
     /*太字に*/
     font-size: 3em;
