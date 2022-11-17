@@ -81,11 +81,10 @@ $(".btn-login").on("click", function () {
 });
 
 
-
 $(".btn-login").on("click", function () {
   console.log("loginボタン押したよ");
   const text =  $("[name=ueserName] option:selected").text();
-  localStorage.setItem("SelectedNunber", text);
+  localStorage.setItem("selectedMumber", text);
   location.href = "../html/map.html";
 });
 

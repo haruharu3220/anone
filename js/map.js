@@ -12,13 +12,22 @@ function countRemainingmMessage() {
 
 }
 selectedMemberDisplay();
+
+selectedMemberDisplayTop();
+
+function selectedMemberDisplayTop(){
+    const Mumber = localStorage.getItem("selectedMumber");
+    console.log("あなたは"+Mumber);
+    $(".selectedMumer").text("あなたは　\"" + Mumber + "\"　です");
+}
+
 //選択中のキャラを表示
 
 function selectedMemberDisplay() {
     const Mumber = localStorage.getItem("selectMumber");
     const jsonData2 = localStorage.getItem("memo");
     const data = JSON.parse(jsonData2);
-    $(".selectedMumer").append(data[Mumber]);
+    $(".selectedMumer").append(Mumber);
 
     return (data[Mumber]);
 }
