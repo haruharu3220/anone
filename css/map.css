@@ -295,3 +295,17 @@ https://emotopi.com/%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B%E3%83%95%E3%82
     /* width: 200px;
     height: 200px; */
 }
+
+.navbar-brand{
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.navbar-nav{
+    margin-left: auto;
+}
+
+
+.top{
+    font-weight: bold;
+}

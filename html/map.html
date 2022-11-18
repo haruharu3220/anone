@@ -27,6 +27,10 @@ https://johobase.com/font-awesome-icon-font-list-free/
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/sanitize.css">
 
@@ -50,47 +54,43 @@ https://johobase.com/font-awesome-icon-font-list-free/
 </head>
 
 <body>
+
+    <!-- ナビゲーションバー -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">あのね。</a>
+        <!-- レスポンシブ対応用 -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item" id="btn-top">
+                    <a class="nav-link" href="#">
+                        <div class="btn-returnTop">ログアウト</div>
+                    </a>
+                </li>
+                <li class="nav-item" id="btn-history">
+                    <a class="nav-link" href="#">
+                        <div class="btn-history">りせき</div>
+                    </a>
+                </li>
+                <!-- <li class="nav-item" id="btn-memberSetting">
+                    <a class="nav-link" href="#">設定</a>
+                </li> -->
+                <li class="nav-item" id="btn-usage">
+                    <a class="nav-link" href="#">
+                        <div class="btn-usage">使い方</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <h1>マップ画面</h1>
     <div class="selectedMumer"></div>
     <div class="remainingmMessage"> あなたに届いている残りのメッセージは：</div>
-    <!-- 
-    ダイアログ
-    <div class="popup" id="js-popup">
-        <div class="popup-inner">
-            <div class="close-btn" id="js-close-btn"><i class="fas fa-times"></i></div>
-            <div class="Form">
-                <div class="Form-Item">
-                    <p class="Form-Item-Label"><span class="Form-Item-Label-Required">宛先</span>
-                        <select name="example2" size="5">
-                            <option value="">5つの選択肢を表示</option>
-                            <option>選択肢のサンプル2</option>
-                            <option>選択肢のサンプル3</option>
-                            <option>選択肢のサンプル4</option>
-                            <option>選択肢のサンプル5</option>
-                            <option>選択肢のサンプル6</option>
-                            <option>選択肢のサンプル7</option>
-                    </p>
-                    <input type="text" class="Form-Item-Input" placeholder="例）山田太郎">
-                </div>
-                <div class="Form-Item">
-                    <p class="Form-Item-Label"><span class="Form-Item-Label-Required">いつ</span>日にち</p>
-                    <input type="text" class="Form-Item-Input" placeholder="例）2022/11/15">
-                </div>
-                <div class="Form-Item">
-                    <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>種類</p>
-                    <input type="email" class="Form-Item-Input" placeholder="例）example@gmail.com">
-                </div>
-                <div class="Form-Item">
-                    <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>メッセージ</p>
-                    <textarea class="Form-Item-Textarea"></textarea>
-                </div>
-                <input type="submit" class="Form-Btn" value="置く">
-            </div>
-        </div>
-        <div class="black-background" id="js-black-bg"></div>
-    </div>
-    <button id="js-show-popup">Show Popup</button> -->
-
 
     <!-- メッセージボックス -->
     <div class="messeageBox" id="messeageBox">
@@ -130,8 +130,10 @@ https://johobase.com/font-awesome-icon-font-list-free/
     <div class="btn btn-comment"><span>コメント</span></div>
     <div class="btn btn-logout"><span>ログアウト</span></div>
     <div class="btn btn-returnTop"><span>戻る</span></div>
-    <div class="btn btn-history"><span>履歴</span></div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>

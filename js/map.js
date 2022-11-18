@@ -59,6 +59,10 @@ $(".btn-history").on("click", function () {
 });
 
 
+$("#btn-usage").on("click",function(){
+    console.log("設定ボタン押したよ");
+location.href="../html/usage.html";
+});
 
 //置くボタンクリック
 $(".commentDone").on("click", function () {

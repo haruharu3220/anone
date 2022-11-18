@@ -23,6 +23,11 @@ body{
 }
 
 h1{
+    color: white;
+    text-shadow:1px 1px 0 gray, -1px -1px 0 black,
+    -1px 1px 0 black, 1px -1px 0 black,
+    0px 1px 0 black,  0-1px 0 black,
+    -1px 0 0 black, 1px 0 0 black;
     position: absolute;
     font-weight: bold;
     /*太字に*/
@@ -38,6 +43,11 @@ h1{
 
 }
 .explainText {
+    color: white;
+    text-shadow:1px 1px 0 gray, -1px -1px 0 black,
+    -1px 1px 0 black, 1px -1px 0 black,
+    0px 1px 0 black,  0-1px 0 black,
+    -1px 0 0 black, 1px 0 0 black;
     position: absolute;
     /*絶対配置*/
     font-weight: bold;
