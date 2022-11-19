@@ -19,7 +19,7 @@
 
 let member = [];
 let i = 0;
-//家族を追加する
+//家族を追加する ☆11/20 この処理はもう不要
 $(".btn-save").on("click", function () {
   console.log("保存に戻るボタン押したよ");
   //名前を下に表示
@@ -53,30 +53,22 @@ $("body").on("click", ".member", function () {
 
 
 
-
+//デバッグ用ボタン→ローカルストレージの中身を消去
 $(".btn-reset").on("click", function () {
   console.log("resetボタン押したよ");
   localStorage.clear()
   member.splice(0);
 });
 
-$(".btn-getter").on("click", function () {
-  console.log("getterボタン押したよ");
-
-});
-
-$(".btn-returnTop").on("click", function () {
+//TOPに戻るボタン
+$("#btn-top").on("click", function () {
   console.log("TOPに戻るボタン押したよ");
   location.href = "../index.html";
 });
 
-
+//
 $(".btn-login").on("click", function () {
   console.log("loginボタン押したよ");
-
-
-
-
   location.href = "../html/map.html";
 });
 
@@ -91,28 +83,17 @@ $(".btn-login").on("click", function () {
 
 
 
-//プラスボタンクリック
+//プラスボタン（家族登録）クリック
 $(".fa-square-plus").on("click", function () {
-  console.log("家族追加ボタン押したよ");
+  console.log("家族登録ボタン押したよ");
 
   const ul = document.getElementById("characterList");
-
-  //const div = document.createElement("div");
   const li = document.createElement("li");
   const text = document.createTextNode($(".inputMenberInput").val());
   	
   li.appendChild(text);
-
-
-  console.log(li);
-
-
+  // console.log(li);
   ul.appendChild(li);
-
-  // div.appendChild(li2);
-  // div.appendChild(li3);
-
-  // li.appendChild(text);
 
   $("#characterList").append(ul);
   $("#characterList").css("text-align","center");
@@ -126,12 +107,6 @@ $(".fa-square-plus").on("click", function () {
     $(this).addClass('style-li' + i);
     i++;
   })
-
-  $('#style-li5').append("<i class=\"fa-regular fa-pen-to-square fa-xl\"></i>");
-  $('#style-li5').append("<i class=\"fa-regular fa-circle-xmark fa-xl\"></i>");
-
-  //追加後、入力フォーム初期化
-  $(".inputMenberInput").val("");
 
 
 
@@ -160,43 +135,31 @@ $(".fa-square-plus").on("click", function () {
 
   let mumber = [];
 
-  if (localStorage.getItem("memo")) {
-    const jsonData = localStorage.getItem("memo");
+  if (localStorage.getItem("myfamily")) {
+    const jsonData = localStorage.getItem("myfamily");
     const data = JSON.parse(jsonData);
     data.push($(".inputMenberInput").val());
     const jsonData2 = JSON.stringify(data);
-    localStorage.setItem("memo", jsonData2);
+    localStorage.setItem("myfamily", jsonData2);
   } else {
     const memberName = $(".inputMenberInput").val();
     mumber.push(memberName);
     const jsonData2 = JSON.stringify(mumber);
-    localStorage.setItem("memo", jsonData2);
+    localStorage.setItem("myfamily", jsonData2);
   }
+
+
+
+    //追加後、入力フォーム初期化
+    $(".inputMenberInput").val("");
 });
 
 
 //キャラ選択ボタン→各キャラ分作成必要あり
 $("body").on("click", ".style-li", function () {
 
-  // console.log("押したよtest|||" + $(".style-li1").text());
-  // const jsonData = localStorage.getItem("memo");
-  // const data = JSON.parse(jsonData);
-  // console.log(data);
-  // console.log(data.length);
-  // for (let i = 0; i < data.length; i++) {
-  //   // console.log("ここ");
-  //   if (data[i] === $(".style-li1").text()) {
-  //     localStorage.setItem("selectMumber", i);
-
-  //   }
-  // }
   //ログインモーダル表示
   $(".selectedMumer").append($(this).text());
-  
-  
   loginModal.style.display = 'block';
 //  $(".selectedMumer").append($("[name=ueserName] option:selected").text());
-
-
-
 });
