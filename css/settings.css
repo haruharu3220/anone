@@ -11,7 +11,12 @@ h1{
 
 .inputMemberName .inputMemberInput{
   background: white;
-width: 100px;
+  width: 100px;
+}
+.inputMenberInput::before{
+  font-family: "Font Awesome 5 Free";
+  content: 'f0fe';
+  font-weight:regular;
 }
 
 #ueser{
@@ -66,4 +71,14 @@ color: pink;
 .modal-body p {
   margin: 10px;
   font-size: 32px;
+}
+
+.navbar-brand{
+  font-size: 48px;
+  font-weight: bold;
+}
+
+
+.navbar-nav{
+  margin-left: auto;
 }
