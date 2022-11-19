@@ -83,32 +83,69 @@ $(".btn-login").on("click", function () {
 
 $(".btn-login").on("click", function () {
   console.log("loginボタン押したよ");
-  const text =  $("[name=ueserName] option:selected").text();
+  const text = $("[name=ueserName] option:selected").text();
   localStorage.setItem("selectedMumber", text);
   location.href = "../html/map.html";
 });
+
+
 
 
 //プラスボタンクリック
 $(".fa-square-plus").on("click", function () {
   console.log("家族追加ボタン押したよ");
 
-  //下に名前を表示
-  $('ul').append("<li>" + $("[name=ueserName] option:selected").text() + "</li>");
+  const ul2 = document.getElementById("characterList");
 
-  // https://www.webopixel.net/javascript/216.html
-  // var i = 1;
-  // $('li').each(function () {
-  //   $(this).addClass('style-li' + i);
-  //   i++;
-  // }
+  //const div = document.createElement("div");
+  const li = document.createElement("li");
+  const text = document.createTextNode($(".inputMenberInput").val());
+  	
+  li.appendChild(text);
+
+
+  console.log(li);
+
+
+  ul2.appendChild(li);
+
+  // div.appendChild(li2);
+  // div.appendChild(li3);
+
+  // li.appendChild(text);
+
+  $("#characterList").append(ul2);
+
+
+  //ナビバーのliタグも数えているから5からスタートになる
+  //そのためiを-4にしておく
+  var i = -4;
   $('li').each(function () {
-      $(this).addClass('style-li');
+    $(this).addClass('style-li');
+    $(this).addClass('style-li' + i);
+    i++;
   })
 
+  $('#style-li5').append("<i class=\"fa-regular fa-pen-to-square fa-xl\"></i>");
+  $('#style-li5').append("<i class=\"fa-regular fa-circle-xmark fa-xl\"></i>");
+
+  //追加後、入力フォーム初期化
+  $(".inputMenberInput").val("");
 
 
-// ボツになったアイコンたち
+
+  // //下に名前を表示
+  // $('ul').append("<li>" + $("[name=ueserName] option:selected").text() + "</li>");
+
+  // https://www.webopixel.net/javascript/216.html
+
+  // $('li').each(function () {
+  //   $(this).addClass('style-li');
+  // })
+
+
+
+  // ボツになったアイコンたち
   // $('ul').append("<li><div><i class=\"fa-regular fa-pen-to-square fa-xl\"></i></div></li>");
   // $('ul').append("<li><div><i class=\"fa-regular fa-circle-xmark fa-xl\"></i></div></li>");
 
@@ -137,9 +174,6 @@ $(".fa-square-plus").on("click", function () {
 });
 
 
-
-
-
 //キャラ選択ボタン→各キャラ分作成必要あり
 $("body").on("click", ".style-li", function () {
 
@@ -156,6 +190,12 @@ $("body").on("click", ".style-li", function () {
   //   }
   // }
   //ログインモーダル表示
+  $(".selectedMumer").append($(this).text());
+  
+  
   loginModal.style.display = 'block';
-   $(".selectedMumer").append($("[name=ueserName] option:selected").text());
+//  $(".selectedMumer").append($("[name=ueserName] option:selected").text());
+
+
+
 });

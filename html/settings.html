@@ -93,27 +93,24 @@ https://zero-plus.io/media/css-position-relative/
                 <input type=”text” class="inputMenberInput" half placeholder="お名前" autocomplete="no">
             </form>
         </div>
-
-
-
-        <label for="ueser">だれでログインしますか？</label><br>
-        <select name="ueserName" id="ueser">
-            <option value=0>はやと</option>
-            <option value=1>ゆうちゃん</option>
-            <option value=2>ディオブランド‐</option>
-        </select>
-        <i class="fa-regular fa-square-plus  fa-xl"></i>
+        <div class="inputMemberNameButton">
+            <i class="fa-regular fa-square-plus  fa-xl fa-fw"></i>
+        </div>
     </div>
 
-    <ul></ul>
+    <div class="characterListDisplay">
+        <ul id="characterList"></ul>
+    </div>
 
+    <label for="ueser">だれでログインしますか？</label><br>
+    <select name="ueserName" id="ueser">
+        <option value=0>はやと</option>
+        <option value=1>ゆうちゃん</option>
+        <option value=2>ディオブランド‐</option>
+    </select>
+    <i class="fa-regular fa-square-plus  fa-xl"></i>
+    </div>
 
-
-
-
-    <div class="btn btn-save"><span>+</span></div>
-    <div class="btn btn-reset"><span>-</span></div>
-    <div class="btn btn-returnTop"><span>TOPへ</span></div>
 
 
     <!-- ログインモーダル -->
@@ -130,6 +127,9 @@ https://zero-plus.io/media/css-position-relative/
             <div class="btn btn-login"><span>ログイン</span></div>
         </div>
     </div>
+
+
+    <div class="btn btn-reset"><span>ローカルストレージ削除</span></div>
 
 
     <!-- BootStrap -->
