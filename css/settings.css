@@ -4,19 +4,24 @@ h1{
 
 .inputMember{
   margin: 0 auto;
-  width: 50vw;
+  width: 40vw;
   display: flex;
 }
 
-
-.inputMemberName .inputMemberInput{
+/* .inputMemberName {
+  display: flex;
+  justify-content: center;
   background: white;
-  width: 100px;
-}
-.inputMenberInput::before{
-  font-family: "Font Awesome 5 Free";
-  content: 'f0fe';
-  font-weight:regular;
+  width: 50px;
+} */
+
+.inputMenberInput{
+  display: flex;
+  justify-content: center;
+  width: 38vw;
+  border: 2px solid gray;  /* 枠線 */
+  border-radius: 0.67em;   /* 角丸 */
+
 }
 
 #ueser{
@@ -28,11 +33,6 @@ color: pink;
 
 }
 
-
-.inputMenberInput{
-  background-color: aqua;
-
-}
 
 .modal {
   display: none;

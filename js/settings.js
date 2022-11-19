@@ -95,7 +95,7 @@ $(".btn-login").on("click", function () {
 $(".fa-square-plus").on("click", function () {
   console.log("家族追加ボタン押したよ");
 
-  const ul2 = document.getElementById("characterList");
+  const ul = document.getElementById("characterList");
 
   //const div = document.createElement("div");
   const li = document.createElement("li");
@@ -107,14 +107,15 @@ $(".fa-square-plus").on("click", function () {
   console.log(li);
 
 
-  ul2.appendChild(li);
+  ul.appendChild(li);
 
   // div.appendChild(li2);
   // div.appendChild(li3);
 
   // li.appendChild(text);
 
-  $("#characterList").append(ul2);
+  $("#characterList").append(ul);
+  $("#characterList").css("text-align","center");
 
 
   //ナビバーのliタグも数えているから5からスタートになる
