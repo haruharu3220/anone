@@ -29,27 +29,54 @@ key.push = '';
 var treasure = new Image();
 treasure.src = '../res/treasure.png';
 
+//もぐら(送ったメッセージ)のオブジェクト生成
+var mogu = new Image();
+mogu.src = '../res/mogumogu.png';
+
+//花(読まれたメッセージ)のオブジェクト生成
+var flower = new Image();
+flower.src = '../res/red_flower.png';
+
 //背景画像のオブジェクトを作成
 var scenery04 = new Image();
 scenery04.src = '../res/scenery04.png';
 
 //受け取ったメッセージの座標を格納するボックス
 let receivedMesseagePoint = [];
+//送ったメッセージの座標を格納するボックス
+let sendMesseagePoint = [];
+//読まれたメッセージの座標を格納するボックス
+let readMesseagePoint = [];
+
+
 hasMeeages();
 scenery04.onload = function () {
     mapArea2D.drawImage(scenery04, 0, 0, mapArea.width, mapArea.height * mapArea.width / scenery04.width);
 }
 
+//描画用ループ関数
 function loop() {
 
-    //console.log("無限ループ開始");
+
     move(goast);
     // mapArea2D.drawImage(scenery04,0, 0, 2048, 1364);
     hasMeeages();
     mapArea2D.drawImage(goast.img, goast.x, goast.y, 32, 32);
+
+    //  自分あてにもらったメッセージを描画
     for (let i = 0; i < receivedMesseagePoint.length; i++) {
         mapArea2D.drawImage(treasure, receivedMesseagePoint[i][0], receivedMesseagePoint[i][1], 32, 32);
     }
+    //送ったメッセージを描画
+    for (let i = 0; i < receivedMesseagePoint.length; i++) {
+        mapArea2D.drawImage(mogu, sendMesseagePoint[i][0], sendMesseagePoint[i][1], 32, 32);
+    }
+    //読まれたメッセージを描画
+    for (let i = 0; i < receivedMesseagePoint.length; i++) {
+        mapArea2D.drawImage(flower, readMesseagePoint[i][0], readMesseagePoint[i][1], 32, 32);
+    }
+
+
     // console.log("X="+ goast.x );
     // console.log("Y="+ goast.y );
     requestAnimationFrame(loop);
@@ -68,9 +95,18 @@ function hasMeeages(e) {
         const jsonDataName = localStorage.getItem("selectedMumber");
         const data = JSON.parse(jsonData);
         for (let i = 0; i < data.length; i++) {
+            //自分宛てのメッセージがあれば
             if (jsonDataName === data[i].address) {
                 receivedMesseagePoint.push([data[i].X, data[i].Y]);
             }
+            if(jsonDataName ===data[i].sender && data[i].read ===false ){
+                sendMesseagePoint.push([data[i].X, data[i].Y]);
+            }
+
+            if(jsonDataName ===data[i].sender && data[i].read ===true ){
+                readMesseagePoint.push([data[i].X, data[i].Y]);
+            }
+            
         }
     }
 }

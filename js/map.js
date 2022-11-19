@@ -75,7 +75,8 @@ $(".commentDone").on("click", function () {
         X: goast.x,                              //X座標
         Y: goast.y,                              //Y座標
         // messeage:("#messeageBoxWho").val(),                     //メッセージデバッグ用
-        messeage: "aaa"                          //メッセージデバッグ用
+        messeage: "aaa",                      //メッセージデバッグ用
+        read: false                             //メッセージが読まれたか
     }
     // console.log(messeage);
 

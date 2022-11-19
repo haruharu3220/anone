@@ -56,6 +56,16 @@ $("body").on("click", ".member", function () {
 //デバッグ用ボタン→ローカルストレージの中身を消去
 $(".btn-reset").on("click", function () {
   console.log("resetボタン押したよ");
+
+
+  if (localStorage.getItem("myfamily")) {
+    const jsonData = localStorage.getItem("myfamily");
+    const data = JSON.parse(jsonData);
+    for (let i = 0; data.length; i++) {
+      $("#style-li" + i).remove();
+    }
+  }
+
   localStorage.clear()
   member.splice(0);
 });
@@ -66,46 +76,77 @@ $("#btn-top").on("click", function () {
   location.href = "../index.html";
 });
 
-//
+
+//ログイン画面
 $(".btn-login").on("click", function () {
   console.log("loginボタン押したよ");
   location.href = "../html/map.html";
 });
 
+checkFamily();
+function checkFamily() {
+  if (localStorage.getItem("myfamily")) {
+    const jsonData = localStorage.getItem("myfamily");
+    const data = JSON.parse(jsonData);
+    for (let i = 0; i < data.length; i++) {
+      const ul = document.getElementById("characterList");
+      const li = document.createElement("li");
+      const text = document.createTextNode(data[i]);
+      li.appendChild(text);
+      ul.appendChild(li);
+      $("#characterList").append(ul);
+      $("#characterList").css("text-align", "center");
 
-$(".btn-login").on("click", function () {
-  console.log("loginボタン押したよ");
-  const text = $("[name=ueserName] option:selected").text();
-  localStorage.setItem("selectedMumber", text);
-  location.href = "../html/map.html";
-});
+      var familyIndex = -4;
+      $('li').each(function () {
+        $(this).addClass('style-li');
+        $(this).addClass('style-li' + familyIndex);
+        familyIndex++;
+      })
 
-
+    }
+  }
+}
 
 
 //プラスボタン（家族登録）クリック
 $(".fa-square-plus").on("click", function () {
   console.log("家族登録ボタン押したよ");
 
+  // if (localStorage.getItem("myfamily")) {
+  //   const jsonData = localStorage.getItem("myfamily");
+  //   const data = JSON.parse(jsonData);
+  //   for(let i=0;i<data.length;i++){
+  //     const ul = document.getElementById("characterList");
+  //     const li = document.createElement("li");
+  //     const text = document.createTextNode(data[i]);
+  //     li.appendChild(text);
+  //     ul.appendChild(li);
+  //     $("#characterList").append(ul);
+  //     $("#characterList").css("text-align","center");
+  //   }
+  // }
+
+
   const ul = document.getElementById("characterList");
   const li = document.createElement("li");
   const text = document.createTextNode($(".inputMenberInput").val());
-  	
+
   li.appendChild(text);
   // console.log(li);
   ul.appendChild(li);
 
   $("#characterList").append(ul);
-  $("#characterList").css("text-align","center");
+  $("#characterList").css("text-align", "center");
 
 
   //ナビバーのliタグも数えているから5からスタートになる
   //そのためiを-4にしておく
-  var i = -4;
+  var familyIndex = -4;
   $('li').each(function () {
     $(this).addClass('style-li');
-    $(this).addClass('style-li' + i);
-    i++;
+    $(this).addClass('style-li' + familyIndex);
+    familyIndex++;
   })
 
 
@@ -150,8 +191,8 @@ $(".fa-square-plus").on("click", function () {
 
 
 
-    //追加後、入力フォーム初期化
-    $(".inputMenberInput").val("");
+  //追加後、入力フォーム初期化
+  $(".inputMenberInput").val("");
 });
 
 
@@ -160,6 +201,7 @@ $("body").on("click", ".style-li", function () {
 
   //ログインモーダル表示
   $(".selectedMumer").append($(this).text());
+  localStorage.setItem("selectedMumber", $(this).text());
   loginModal.style.display = 'block';
-//  $(".selectedMumer").append($("[name=ueserName] option:selected").text());
+  //  $(".selectedMumer").append($("[name=ueserName] option:selected").text());
 });
