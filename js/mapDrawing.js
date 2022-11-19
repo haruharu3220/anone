@@ -69,11 +69,11 @@ function loop() {
         mapArea2D.drawImage(treasure, receivedMesseagePoint[i][0], receivedMesseagePoint[i][1], 32, 32);
     }
     //送ったメッセージを描画
-    for (let i = 0; i < receivedMesseagePoint.length; i++) {
+    for (let i = 0; i < sendMesseagePoint.length; i++) {
         mapArea2D.drawImage(mogu, sendMesseagePoint[i][0], sendMesseagePoint[i][1], 32, 32);
     }
     //読まれたメッセージを描画
-    for (let i = 0; i < receivedMesseagePoint.length; i++) {
+    for (let i = 0; i < readMesseagePoint.length; i++) {
         mapArea2D.drawImage(flower, readMesseagePoint[i][0], readMesseagePoint[i][1], 32, 32);
     }
 

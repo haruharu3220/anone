@@ -12,20 +12,18 @@ function countRemainingmMessage() {
 
 }
 
+//選択中のキャラを表示する関数
 selectedMemberDisplay();
 function selectedMemberDisplay(){
     $(".selectedMumer").text("あなたは　\"" + selectedMember() + "\"　です");
 }
 
-//選択中のキャラを表示
-
+//選択中のキャラ名を取得する関数
 function selectedMember() {
+
     const Mumber = localStorage.getItem("selectedMumber");
     return Mumber;
 }
-
-
-$(".selectedMumer").append(data);
 
 
 
@@ -61,7 +59,7 @@ $(".commentDone").on("click", function () {
     console.log("置くをボタン押したよ");
     const messeage = {
         address: $("[name=who] option:selected").text(),          //誰宛
-        sender: localStorage.getItem("selectMumber"),//誰から
+        sender: localStorage.getItem("selectedMumber"),//誰から
         sendDate: $("[name=when] option:selected").text(),       //いつ開封するか
         type: $("[name=type] option:selected").text(),           //タイプ
         X: goast.x,                              //X座標
