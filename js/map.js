@@ -11,29 +11,21 @@ let i = 0;
 function countRemainingmMessage() {
 
 }
+
 selectedMemberDisplay();
-
-selectedMemberDisplayTop();
-
-function selectedMemberDisplayTop(){
-    const Mumber = localStorage.getItem("selectedMumber");
-    console.log("あなたは"+Mumber);
-    $(".selectedMumer").text("あなたは　\"" + Mumber + "\"　です");
+function selectedMemberDisplay(){
+    $(".selectedMumer").text("あなたは　\"" + selectedMember() + "\"　です");
 }
 
 //選択中のキャラを表示
 
-function selectedMemberDisplay() {
-    const Mumber = localStorage.getItem("selectMumber");
-    const jsonData2 = localStorage.getItem("memo");
-    const data = JSON.parse(jsonData2);
-    $(".selectedMumer").append(Mumber);
-
-    return (data[Mumber]);
+function selectedMember() {
+    const Mumber = localStorage.getItem("selectedMumber");
+    return Mumber;
 }
 
 
-
+$(".selectedMumer").append(data);
 
 
 
