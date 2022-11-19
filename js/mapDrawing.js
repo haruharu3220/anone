@@ -55,6 +55,7 @@ scenery04.onload = function () {
 }
 
 //描画用ループ関数
+
 function loop() {
 
 
@@ -224,6 +225,20 @@ function openMeeageBox(e) {
             //メッセージはあるけど自分宛てではないまたは座標が違う
             console.log("goast.x =" + goast.x + "goast.y" + goast.y);
             $(".messeageBox").css("display", "block");
+            const familyJSONData = localStorage.getItem("myfamily");
+            const familyData = JSON.parse(familyJSONData);
+
+            //HTML
+            const who = document.getElementById("messeageBoxWho");
+            
+            for(let i=0;i<familyData.length;i++){
+                const option = document.createElement("option");
+
+                const text = document.createTextNode(familyData[i]);
+                option.appendChild(text);
+                // console.log(li);
+                who.appendChild(option);
+            }
 
         } else {
             //そもそもメッセージがない
