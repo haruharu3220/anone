@@ -28,18 +28,52 @@ https://zero-plus.io/media/css-position-relative/
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/sanitize.css">
     <link rel="stylesheet" href="../css/button.css">
-    <link rel="stylesheet" href="../css/settings.css">
     <link rel="stylesheet" href="../css/font.css">
+    <link rel="stylesheet" href="../css/settings.css">
+
     <script src="https://kit.fontawesome.com/092628cd4c.js" crossorigin="anonymous"></script>
     <!-- BootStrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>あのね。</title>
 </head>
 
 <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">あのね。設定だよ</a>
+        <!-- レスポンシブ対応用 -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item" id="btn-top">
+                    <a class="nav-link" href="#">
+                        <div class="top">トップ</div>
+                    </a>
+                </li>
+                <li class="nav-item" id="btn-login">
+                    <a class="nav-link" href="#">ログイン</a>
+                </li>
+                <li class="nav-item" id="btn-memberSetting">
+                    <a class="nav-link" href="#">設定</a>
+                </li>
+                <li class="nav-item" id="btn-usage">
+                    <a class="nav-link" href="#">使い方</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
     <h1>家族一覧</h1>
     <!-- 
@@ -48,16 +82,20 @@ https://zero-plus.io/media/css-position-relative/
             https://fontawesome.com/v6/docs/web/style/size
         
         -->
-<!-- 不要なアイコン -->
+    <!-- 不要なアイコン -->
     <!-- <div><i class="fa-regular fa-pen-to-square fa-xl"></i></div>
     <i class="fa-regular fa-circle-xmark fa-xl"></i> -->
     <div class="inputMember">
-        <!-- <form autocomplete="off">
-            <!-- 自動補完を無効 -->
-            <!-- <div class="inputMemberName"> -->
-            <!-- <input type=”text” class="inputMenberInput" half placeholder="お名前" autocomplete="no"> -->
-            <!-- </div> -->
-        </form> 
+
+        <div class="inputMemberName">
+            <form autocomplete="off">
+                <!-- 自動補完を無効 -->
+                <input type=”text” class="inputMenberInput" half placeholder="お名前" autocomplete="no">
+            </form>
+        </div>
+
+
+
         <label for="ueser">だれでログインしますか？</label><br>
         <select name="ueserName" id="ueser">
             <option value=0>はやと</option>
@@ -95,9 +133,46 @@ https://zero-plus.io/media/css-position-relative/
 
 
     <!-- BootStrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../js/settings.js"></script>
 </body>
 
 </html>
+
+
+
+
+
+
+<!-- 
+ボツコード　2022/11/17提出文
+<h1>家族一覧</h1>
+        
+        サイズの変更方法
+        https://fontawesome.com/v6/docs/web/style/size
+    
+    -->
+<!-- 不要なアイコン -->
+<!-- <div><i class="fa-regular fa-pen-to-square fa-xl"></i></div>
+<i class="fa-regular fa-circle-xmark fa-xl"></i> -->
+<!-- <div class="inputMember"> -->
+<!-- <form autocomplete="off">
+         自動補完を無効 -->
+<!-- <div class="inputMemberName"> -->
+<!-- <input type=”text” class="inputMenberInput" half placeholder="お名前" autocomplete="no"> -->
+<!-- </div> -->
+<!-- </form>
+    <label for="ueser">だれでログインしますか？</label><br>
+    <select name="ueserName" id="ueser">
+        <option value=0>はやと</option>
+        <option value=1>ゆうちゃん</option>
+        <option value=2>ディオブランド‐</option>
+    </select>
+    <i class="fa-regular fa-square-plus  fa-xl"></i>
+</div>
+
+<ul></ul> 
+-->
