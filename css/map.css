@@ -277,8 +277,22 @@ https://emotopi.com/%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B%E3%83%95%E3%82
 
 .messeageBoxTitlle {
     text-align: center;
-    font-size: 32px;
+    font-size: 48px;
+    font-weight: bold;
+    background-color: lightgoldenrodyellow;
+
 }
+
+.messeageContentTitle{
+    margin: 0;
+}
+
+#messeageContent{
+    border: 2px solid gray;  /* 枠線 */
+    border-radius: 0.3em;   /* 角丸 */
+    
+}
+
 
 #messeageBoxWho,
 #messeageBoxWhen,
@@ -309,3 +323,6 @@ https://emotopi.com/%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B%E3%83%95%E3%82
 .top{
     font-weight: bold;
 }
+
+
+
