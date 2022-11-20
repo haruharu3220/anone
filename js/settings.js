@@ -17,39 +17,6 @@
 // 
 
 
-let member = [];
-let i = 0;
-//家族を追加する ☆11/20 この処理はもう不要
-$(".btn-save").on("click", function () {
-  console.log("保存に戻るボタン押したよ");
-  //名前を下に表示
-  // $('ul').append("<div class=\"member\" id = \"menber0\"><li>" + $(".inputMenberInput").val() +"</li></div>");
-  $('ul').append("<div class=\"member\">テスト</div>");
-  $(".member").css("color", "red");
-  $(".member").css("width", "30vw");
-  $(".member").css("height", "5vh");
-  $(".member").css("background-color", "white");
-  $(".member").css("margin", "5px");
-
-  const memberName = $(".inputMenberInput").val();
-  member.push(memberName);
-  console.log(member); //ここまでできている
-  const jsonData = JSON.stringify(member);
-
-  localStorage.setItem("memo", jsonData);
-});
-
-
-$("body").on("click", ".member", function () {
-  const test = $(this).attr('class');
-  console.log("押したよtest|||" + test);
-  const selectMember = $("." + test).val();
-  console.log("押したよtest2" + selectMember);
-
-  console.log("押したよ" + $(this).attr('class'));
-  console.log("押したよ" + selectMember);
-});
-
 
 
 
