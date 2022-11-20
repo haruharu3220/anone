@@ -60,9 +60,8 @@ function loop() {
 
 
     move(goast);
-    // mapArea2D.drawImage(scenery04,0, 0, 2048, 1364);
     hasMeeages();
-
+    mapArea2D.fillRect(0, 0, mapArea.width, mapArea.height);
 
     //  自分あてにもらったメッセージを描画
     for (let i = 0; i < receivedMesseagePoint.length; i++) {
@@ -96,9 +95,14 @@ function hasMeeages(e) {
         const jsonData = localStorage.getItem("messeages");
         const jsonDataName = localStorage.getItem("selectedMumber");
         const data = JSON.parse(jsonData);
+
+        receivedMesseagePoint.length = 0;
+        sendMesseagePoint.length = 0;
+        readMesseagePoint.length = 0;
+
         for (let i = 0; i < data.length; i++) {
-            //自分宛てのメッセージがあれば
-            if (jsonDataName === data[i].address) {
+            //自分宛てのメッセージがあれば（未読）
+            if (jsonDataName === data[i].address && data[i].read===false) {
                 receivedMesseagePoint.push([data[i].X, data[i].Y]);
             }
             if (jsonDataName === data[i].sender && data[i].read === false) {
@@ -206,7 +210,17 @@ function openMeeageBox(e) {
         //メッセージがあったら
         if (hasMyMesseage() != -1) {
             messeageBox2.style.display = 'block';
+            //ここからやる
             $(".receivedWhoContent").text(data[i].sender);
+            $(".receivedTypeContent").text(data[i].type);
+            $(".receivedContent").text(data[i].messeage);
+            
+            
+            //呼んだメッセージに更新
+            data[i].read = true;
+            const jsonData = JSON.stringify(data);
+            localStorage.setItem("messeages", jsonData);
+
 
 
         } else {
@@ -252,7 +266,8 @@ function hasMyMesseage(e) {
             //メッセージボックスの座標とずれが少なければ
             if (Mumber === data[i].address &&
                 Math.abs(data[i].X - goast.x) <= 16 &&
-                Math.abs(data[i].Y - goast.y) <= 16) {
+                Math.abs(data[i].Y - goast.y) <= 16 &&
+                data[i].read === false) {
                 console.log("★Step3");
                 return i;
             }
