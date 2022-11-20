@@ -199,39 +199,15 @@ function openMeeageBox(e) {
     if (e.keyCode === 13) {
 
         //メッセージがあったら
-        if(hasMyMesseage()){
-            messeageBox.style.display = 'none';
-
-
-        }
-                    if (jsonDataName === data[i].address) {
-                        console.log("★Step3");
-                        alert("誰からのメッセージ？→" + data[i].sender);
-                        alert("タイプは？→" + data[i].type);
-                        alert("内容は？→" + data[i].messeage);
-                        return;
-                    }
-                }
-
-            }
-            //メッセージはあるけど自分宛てではないまたは座標が違う
-            console.log("goast.x =" + goast.x + "goast.y" + goast.y);
-            $(".messeageBox").css("display", "block");
-
-            //HTMLの編集→設定した家族一覧を選択肢に出す
-            getFamilyList();
-
-        } else {
-            //そもそもメッセージがない
-            console.log("goast.x =" + goast.x + "goast.y" + goast.y);
-            $(".messeageBox").css("display", "block");
-
-            //HTMLの編集→設定した家族一覧を選択肢に出す
+        if (hasMyMesseage()) {
+            messeageBox2.style.display = 'block';
+        }else{
+            messeageBox.style.display = 'block';
             getFamilyList();
         }
     }
-}
 
+}
 
 
 //家族一覧を取得して選択肢に追加

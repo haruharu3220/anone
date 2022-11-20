@@ -8,19 +8,37 @@ let mapAreaY = 0; //クリックしたY座標
 let positions = [];
 let i = 0;
 
-function countRemainingmMessage() {
 
+//受け取ったメッセージ数を表示する関数
+receivedMessegaNumDisplay();
+function receivedMessegaNumDisplay(){
+    $(".remainingmMessage").text("あなたに届いた宝物は \" "+ receivedMessegaNum() +" \"個です");
+}
+
+//メッセージが来ているか調査する関数
+function receivedMessegaNum() {
+    let receivedMessegaNum = 0;
+    console.log("メッセージが来ているか調査する関数");
+    if (localStorage.getItem("messeages")) {
+        const jsonData = localStorage.getItem("messeages");
+        const data = JSON.parse(jsonData);
+        for (let i = 0; i < data.length; i++) {
+            if (data.address === selectedMember()) {
+                receivedMessegaNum++;
+            }
+        }
+    }
+    return receivedMessegaNum;
 }
 
 //選択中のキャラを表示する関数
 selectedMemberDisplay();
-function selectedMemberDisplay(){
+function selectedMemberDisplay() {
     $(".selectedMumer").text("あなたは　\"" + selectedMember() + "\"　です");
 }
 
 //選択中のキャラ名を取得する関数
 function selectedMember() {
-
     const Mumber = localStorage.getItem("selectedMumber");
     return Mumber;
 }
@@ -49,13 +67,13 @@ $(".btn-history").on("click", function () {
 });
 
 
-$("#btn-usage").on("click",function(){
+$("#btn-usage").on("click", function () {
     console.log("設定ボタン押したよ");
-location.href="../html/usage.html";
+    location.href = "../html/usage.html";
 });
 
 //置くボタンクリック
-$(".commentDone").on("click", function () {
+$(".btn-outline-success").on("click", function () {
     console.log("置くをボタン押したよ");
     const messeage = {
         address: $("[name=who] option:selected").text(),          //誰宛
@@ -87,31 +105,7 @@ $(".commentDone").on("click", function () {
     messeageBox.style.display = 'none';
 });
 
-//メッセージが来ているか調査する関数
-putMessega();
-function putMessega() {
-    console.log("メッセージが来ているか調査する関数");
-    if (localStorage.getItem("messeages")) {
-        const jsonData = localStorage.getItem("messeages");
-        const data = JSON.parse(jsonData);
-        // https://www.flatflag.nir87.com/select-2-1240#value-3
-        // console.log(data[2]);
-        // console.log(data[2].sender + "さんから届きました。");
 
-        // console.log(data[2].type + "です");
-        // console.log(data[2].messeage);
-        for (let i = 0; i < data.length; i++) {
-            // if(localStorage.getItem("selectMumber")=== data[i].address){
-
-            // alert("メッセージが届いているよ");
-            // alert(data[i].sender +"さんから届きました。");
-            // alert(data[i].type +"です");
-            // alert(data[i].messeage);
-            // }
-        }
-    }
-
-}
 
 
 
