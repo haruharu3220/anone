@@ -61,7 +61,7 @@ $(".btn-reset").on("click", function () {
   if (localStorage.getItem("myfamily")) {
     const jsonData = localStorage.getItem("myfamily");
     const data = JSON.parse(jsonData);
-    for (let i = 0; data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
       $("#style-li" + i).remove();
     }
   }
@@ -69,6 +69,10 @@ $(".btn-reset").on("click", function () {
   localStorage.clear()
   member.splice(0);
 });
+
+
+
+
 
 //TOPに戻るボタン
 $("#btn-top").on("click", function () {
@@ -144,8 +148,10 @@ $(".fa-square-plus").on("click", function () {
   //そのためiを-4にしておく
   var familyIndex = -4;
   $('li').each(function () {
-    $(this).addClass('style-li');
-    $(this).addClass('style-li' + familyIndex);
+    if (familyIndex >= 0) {
+      $(this).addClass('style-li');
+      $(this).addClass('style-li' + familyIndex);
+    }
     familyIndex++;
   })
 
