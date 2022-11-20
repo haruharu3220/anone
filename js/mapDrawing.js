@@ -62,7 +62,7 @@ function loop() {
     move(goast);
     // mapArea2D.drawImage(scenery04,0, 0, 2048, 1364);
     hasMeeages();
-    mapArea2D.drawImage(goast.img, goast.x, goast.y, 32, 32);
+
 
     //  自分あてにもらったメッセージを描画
     for (let i = 0; i < receivedMesseagePoint.length; i++) {
@@ -77,6 +77,7 @@ function loop() {
         mapArea2D.drawImage(flower, readMesseagePoint[i][0], readMesseagePoint[i][1], 32, 32);
     }
 
+    mapArea2D.drawImage(goast.img, goast.x, goast.y, 32, 32);
 
     // console.log("X="+ goast.x );
     // console.log("Y="+ goast.y );
@@ -190,28 +191,19 @@ function keyupfunc02(event) {
     }
 }
 
+//☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
 //エンターキーを押したら
+//☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
 addEventListener('keydown', openMeeageBox);
 function openMeeageBox(e) {
     if (e.keyCode === 13) {
-        //メッセージがある
-        if (localStorage.getItem("messeages")) {
-            console.log("★");
 
-            const jsonData = localStorage.getItem("messeages");
-            const jsonDataName = localStorage.getItem("selectedMumber");
-            const data = JSON.parse(jsonData);
-            const Mumber = localStorage.getItem("selectMumber");
+        //メッセージがあったら
+        if(hasMyMesseage()){
+            messeageBox.style.display = 'none';
 
-            //メッセージを検索
-            for (let i = 0; i < data.length; i++) {
-                console.log("★" + data.length);
-                //メッセージボックスの座標とずれが少なければ
-                if (Math.abs(data[i].X - goast.x) <= 16 && Math.abs(data[i].Y - goast.y) <= 16) {
-                    console.log("★Step2");
-                    console.log(Mumber);
 
-                    //自分宛てなら
+        }
                     if (jsonDataName === data[i].address) {
                         console.log("★Step3");
                         alert("誰からのメッセージ？→" + data[i].sender);
@@ -257,3 +249,31 @@ function getFamilyList(e) {
         }
     }
 }
+
+
+//自分宛てメッセージがあるかを調べる関数
+function hasMyMesseage(e) {
+
+    const jsonData = localStorage.getItem("messeages");
+    const jsonDataName = localStorage.getItem("selectedMumber");
+    const data = JSON.parse(jsonData);
+    const Mumber = localStorage.getItem("selectMumber");
+
+    //メッセージを検索
+    for (let i = 0; i < data.length; i++) {
+        console.log("★" + data.length);
+        //自分宛てなら
+        //メッセージボックスの座標とずれが少なければ
+        if (jsonDataName === data[i].address &&
+            Math.abs(data[i].X - goast.x) <= 16 &&
+            Math.abs(data[i].Y - goast.y) <= 16) {
+            console.log("★Step3");
+            return true;
+        }
+    }
+    return false;
+}
+
+
+
+
