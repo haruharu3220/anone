@@ -198,12 +198,21 @@ addEventListener('keydown', openMeeageBox);
 function openMeeageBox(e) {
     if (e.keyCode === 13) {
 
+        const jsonData = localStorage.getItem("messeages");
+        const jsonDataName = localStorage.getItem("selectedMumber");
+        const data = JSON.parse(jsonData);
+        const Mumber = localStorage.getItem("selectMumber");
+        const i = hasMyMesseage();
         //メッセージがあったら
-        if (hasMyMesseage()) {
+        if (hasMyMesseage() != -1) {
             messeageBox2.style.display = 'block';
-        }else{
+            $(".receivedWhoContent").text(data[i].sender);
+
+
+        } else {
             messeageBox.style.display = 'block';
             getFamilyList();
+
         }
     }
 
@@ -229,25 +238,29 @@ function getFamilyList(e) {
 
 //自分宛てメッセージがあるかを調べる関数
 function hasMyMesseage(e) {
+    if (!localStorage.getItem("messeages")) {
+        return -1;
+    } else {
+        const jsonData = localStorage.getItem("messeages");
+        const data = JSON.parse(jsonData);
+        const Mumber = localStorage.getItem("selectedMumber");
 
-    const jsonData = localStorage.getItem("messeages");
-    const jsonDataName = localStorage.getItem("selectedMumber");
-    const data = JSON.parse(jsonData);
-    const Mumber = localStorage.getItem("selectMumber");
-
-    //メッセージを検索
-    for (let i = 0; i < data.length; i++) {
-        console.log("★" + data.length);
-        //自分宛てなら
-        //メッセージボックスの座標とずれが少なければ
-        if (jsonDataName === data[i].address &&
-            Math.abs(data[i].X - goast.x) <= 16 &&
-            Math.abs(data[i].Y - goast.y) <= 16) {
-            console.log("★Step3");
-            return true;
+        //メッセージを検索
+        for (let i = 0; i < data.length; i++) {
+            console.log("★" + data.length);
+            //自分宛てなら
+            //メッセージボックスの座標とずれが少なければ
+            if (Mumber === data[i].address &&
+                Math.abs(data[i].X - goast.x) <= 16 &&
+                Math.abs(data[i].Y - goast.y) <= 16) {
+                console.log("★Step3");
+                return i;
+            }
         }
+
+        return -1;
     }
-    return false;
+
 }
 
 

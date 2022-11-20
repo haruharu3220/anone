@@ -82,8 +82,8 @@ $(".btn-outline-success").on("click", function () {
         type: $("[name=type] option:selected").text(),           //タイプ
         X: goast.x,                              //X座標
         Y: goast.y,                              //Y座標
-        // messeage:("#messeageBoxWho").val(),                     //メッセージデバッグ用
-        messeage: "aaa",                      //メッセージデバッグ用
+        messeage:$("#messeageContent").val(),                     //メッセージデバッグ用
+        // messeage: "aaa",                      //メッセージデバッグ用
         read: false                             //メッセージが読まれたか
     }
     // console.log(messeage);
@@ -107,7 +107,11 @@ $(".btn-outline-success").on("click", function () {
 
 
 
-
+//×アイコンボタンクリック
+$(".fa-circle-xmark").on("click", function () {
+    messeageBox.style.display = 'none';
+    messeageBox2.style.display = 'none';
+});
 
 
 
