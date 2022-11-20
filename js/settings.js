@@ -103,8 +103,10 @@ function checkFamily() {
 
       var familyIndex = -4;
       $('li').each(function () {
-        $(this).addClass('style-li');
-        $(this).addClass('style-li' + familyIndex);
+        if (familyIndex >= 0) {
+          $(this).addClass('style-li');
+          $(this).addClass('style-li' + familyIndex);
+        }
         familyIndex++;
       })
 
@@ -140,7 +142,7 @@ $(".fa-square-plus").on("click", function () {
   // console.log(li);
   ul.appendChild(li);
 
-  $("#characterList").append(ul);
+  // $("#characterList").append(ul);
   $("#characterList").css("text-align", "center");
 
 
@@ -206,8 +208,16 @@ $(".fa-square-plus").on("click", function () {
 $("body").on("click", ".style-li", function () {
 
   //ログインモーダル表示
+  $(".selectedMumer").text("");
   $(".selectedMumer").append($(this).text());
   localStorage.setItem("selectedMumber", $(this).text());
   loginModal.style.display = 'block';
   //  $(".selectedMumer").append($("[name=ueserName] option:selected").text());
 });
+
+
+//プラスボタン（家族登録）クリック
+$(".fa-circle-xmark").on("click", function () {
+  loginModal.style.display = 'none';
+});
+

@@ -28,12 +28,6 @@ h1{
   font-family: myfont;
 }
 
-.fa-regular{
-color: pink;
-
-}
-
-
 .modal {
   display: none;
   position: fixed;
@@ -69,8 +63,27 @@ color: pink;
 }
 
 .modal-body p {
+  margin-top: 50px;
+
+  text-align: center;
   margin: 10px;
-  font-size: 32px;
+  font-size: 48px;
+}
+
+.modal-body p::before {
+  font-size: 48px;
+  content: "『";
+  text-align: center;
+}
+.modal-body p::after {
+  font-size: 48px;
+  content: "   』";
+  text-align: center;
+}
+
+.fa-circle-xmark{
+  float: right;
+  
 }
 
 .navbar-brand{
