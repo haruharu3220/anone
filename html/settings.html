@@ -36,7 +36,7 @@ https://zero-plus.io/media/css-position-relative/
 
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/sanitize.css">
-    
+
     <link rel="stylesheet" href="../css/font.css">
     <link rel="stylesheet" href="../css/settings.css">
     <link rel="stylesheet" href="../css/button.css">
@@ -63,8 +63,17 @@ https://zero-plus.io/media/css-position-relative/
                         <div class="top">トップ</div>
                     </a>
                 </li>
-                <li class="nav-item" id="btn-login">
-                    <a class="nav-link" href="#">ログイン</a>
+                <li class="nav-item dropdown" id="btn-login">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">ログイン</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item" id="btn-memberSetting">
                     <a class="nav-link" href="#">設定</a>
