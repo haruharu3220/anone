@@ -100,14 +100,14 @@ function hasMeeages(e) {
             if (jsonDataName === data[i].address) {
                 receivedMesseagePoint.push([data[i].X, data[i].Y]);
             }
-            if(jsonDataName ===data[i].sender && data[i].read ===false ){
+            if (jsonDataName === data[i].sender && data[i].read === false) {
                 sendMesseagePoint.push([data[i].X, data[i].Y]);
             }
 
-            if(jsonDataName ===data[i].sender && data[i].read ===true ){
+            if (jsonDataName === data[i].sender && data[i].read === true) {
                 readMesseagePoint.push([data[i].X, data[i].Y]);
             }
-            
+
         }
     }
 }
@@ -190,7 +190,7 @@ function keyupfunc02(event) {
     }
 }
 
-//エンターキー
+//エンターキーを押したら
 addEventListener('keydown', openMeeageBox);
 function openMeeageBox(e) {
     if (e.keyCode === 13) {
@@ -225,25 +225,35 @@ function openMeeageBox(e) {
             //メッセージはあるけど自分宛てではないまたは座標が違う
             console.log("goast.x =" + goast.x + "goast.y" + goast.y);
             $(".messeageBox").css("display", "block");
-            const familyJSONData = localStorage.getItem("myfamily");
-            const familyData = JSON.parse(familyJSONData);
 
-            //HTML
-            const who = document.getElementById("messeageBoxWho");
-            
-            for(let i=0;i<familyData.length;i++){
-                const option = document.createElement("option");
-
-                const text = document.createTextNode(familyData[i]);
-                option.appendChild(text);
-                // console.log(li);
-                who.appendChild(option);
-            }
+            //HTMLの編集→設定した家族一覧を選択肢に出す
+            getFamilyList();
 
         } else {
             //そもそもメッセージがない
             console.log("goast.x =" + goast.x + "goast.y" + goast.y);
             $(".messeageBox").css("display", "block");
+
+            //HTMLの編集→設定した家族一覧を選択肢に出す
+            getFamilyList();
+        }
+    }
+}
+
+
+
+//家族一覧を取得して選択肢に追加
+function getFamilyList(e) {
+    if (localStorage.getItem("myfamily")) {
+        const jsonData = localStorage.getItem("myfamily");
+        const data = JSON.parse(jsonData);
+        for (let i = 0; i < data.length; i++) {
+            var select = document.getElementById("messeageBoxWho");
+            var option = document.createElement("option");
+            option.text = data[i];
+            option.value = data[i];
+            // selectタグの子要素にoptionタグを追加する
+            select.appendChild(option);
         }
     }
 }
