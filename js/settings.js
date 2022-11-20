@@ -49,7 +49,7 @@ $("#btn-top").on("click", function () {
 
 
 //ログイン画面
-$(".btn-login").on("click", function () {
+$(".btn-outline-success").on("click", function () {
   console.log("loginボタン押したよ");
   location.href = "../html/map.html";
 });
@@ -183,8 +183,9 @@ $("body").on("click", ".style-li", function () {
 });
 
 
-//プラスボタン（家族登録）クリック
+//×ボタンクリック（モーダル非表示用）
 $(".fa-circle-xmark").on("click", function () {
   loginModal.style.display = 'none';
 });
+
 
