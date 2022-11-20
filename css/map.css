@@ -35,13 +35,14 @@
 
 
 
-.messeageBoxTitlle {
+.messeageBoxTitlle,
+.receivedMesseageBoxTitlle {
     text-align: center;
     font-size: 48px;
     font-weight: bold;
-    background-color: lightgoldenrodyellow;
-
+    width: 100%;
 }
+
 
 .messeageContentTitle{
     margin: 0;
@@ -84,6 +85,16 @@
 .top{
     font-weight: bold;
 }
+
+.messeageBoxHeader{
+    display: flex;
+}
+
+.modal-a{
+    float: right;
+    /* justify-content: center; */
+}
+
 
 
 

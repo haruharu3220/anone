@@ -37,11 +37,9 @@ https://saruwakakun.com/html-css/basic/font-awesome
 
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/sanitize.css">
-
-    
     <link rel="stylesheet" href="../css/map.css">
-
     <link rel="stylesheet" href="../css/font.css">
+    <script src="https://kit.fontawesome.com/092628cd4c.js" crossorigin="anonymous"></script>
 
 
     <title>あのね。</title>
@@ -98,7 +96,14 @@ https://saruwakakun.com/html-css/basic/font-awesome
     <!-- メッセージ作成用モーダル -->
     <div class="messeageBox" id="messeageBox">
         <div class="modal-content">
-            <div class="messeageBoxTitlle">宝物を届ける</div>
+
+
+            <div class="messeageBoxHeader">
+                <div class="messeageBoxTitlle">宝物を届ける</div>
+                <div class="modal-a"><i class="fa-regular fa-circle-xmark"></i></div>
+            </div>
+
+
             <div class="messeageContentTitle">内容</div>
             <textarea id="messeageContent" name="messeageContentArea"></textarea>
 
@@ -128,7 +133,11 @@ https://saruwakakun.com/html-css/basic/font-awesome
     <!-- メッセージ閲覧用モーダル -->
     <div class="messeageBox2" id="messeageBox2">
         <div class="modal-content">
-            <div class="receivedMesseageBoxTitlle">宝物を開けた</div>
+
+            <div class="messeageBoxHeader">
+                <div class="receivedMesseageBoxTitlle">宝物を開けた</div>
+                <div class="modal-a"><i class="fa-regular fa-circle-xmark"></i></div>
+            </div>
 
             <div class="receivedWhoTitle">だれから：</div>
             <div class="receivedWhoContent"></div>
