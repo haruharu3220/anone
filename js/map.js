@@ -11,9 +11,23 @@ let i = 0;
 
 //受け取ったメッセージ数を表示する関数
 receivedMessegaNumDisplay();
-function receivedMessegaNumDisplay(){
-    $(".remainingmMessage").text("あなたに届いた宝物は \" "+ receivedMessegaNum() +" \"個です");
+function receivedMessegaNumDisplay() {
+    $(".remainingmMessage").text("");
+    $(".remainingmMessage").text("あなたに届いた宝物は \" " + receivedMessegaNum() + " \"個です");
+
 }
+
+addEventListener('keydown', receivedMessegaNumChange);
+function receivedMessegaNumChange(e) {
+    if (e.keyCode === 13) {
+
+        receivedMessegaNumDisplay();
+    }
+}
+
+
+
+
 
 //メッセージが来ているか調査する関数
 function receivedMessegaNum() {
@@ -23,7 +37,7 @@ function receivedMessegaNum() {
         const jsonData = localStorage.getItem("messeages");
         const data = JSON.parse(jsonData);
         for (let i = 0; i < data.length; i++) {
-            if (data.address === selectedMember()) {
+            if (data[i].address === selectedMember() && data[i].read === false) {
                 receivedMessegaNum++;
             }
         }
@@ -82,7 +96,7 @@ $(".btn-outline-success").on("click", function () {
         type: $("[name=type] option:selected").text(),           //タイプ
         X: goast.x,                              //X座標
         Y: goast.y,                              //Y座標
-        messeage:$("#messeageContent").val(),                     //メッセージデバッグ用
+        messeage: $("#messeageContent").val(),                     //メッセージデバッグ用
         // messeage: "aaa",                      //メッセージデバッグ用
         read: false                             //メッセージが読まれたか
     }
