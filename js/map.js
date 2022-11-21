@@ -10,18 +10,31 @@ let i = 0;
 
 
 //受け取ったメッセージ数を表示する関数
-receivedMessegaNumDisplay();
-function receivedMessegaNumDisplay() {
-    $(".remainingmMessage").text("");
-    $(".remainingmMessage").text("あなたに届いた宝物は \" " + receivedMessegaNum() + " \"個です");
-}
-//エンターキーを押したときにメッセージ数を更新する
-addEventListener('keydown', receivedMessegaNumChange);
-function receivedMessegaNumChange(e) {
-    if (e.keyCode === 13) {
-        receivedMessegaNumDisplay();
-    }
-}
+$(function () {
+    setInterval(function() {
+            console.log("繰り返しています。");
+            $(".remainingmMessage").text("");
+            $(".remainingmMessage").text("あなたに届いた宝物は \" " + receivedMessegaNum() + " \"個です");
+        }, 1000);
+    });
+
+
+// $(function () {
+//     receivedMessegaNumDisplay(function() {
+//         $(".remainingmMessage").text("");
+//         $(".remainingmMessage").text("あなたに届いた宝物は \" " + receivedMessegaNum() + " \"個です");
+//     }, 3000);
+// });
+
+
+
+// //エンターキーを押したときにメッセージ数を更新する
+// addEventListener('keydown', receivedMessegaNumChange);
+// function receivedMessegaNumChange(e) {
+//     if (e.keyCode === 13) {
+//         receivedMessegaNumDisplay();
+//     }
+// }
 
 
 //メッセージが来ているか調査する関数
@@ -77,7 +90,7 @@ $(".btn-outline-success").on("click", function () {
     day = date.getDate();
     month = date.getMonth() + 1;
     year = date.getFullYear();
-    let reservationDate = String(year) + String(month) +String(day);
+    let reservationDate = String(year) + String(month) + String(day);
     console.log(year + "年");
     console.log(month + "月");
     console.log(day + "日");
@@ -94,7 +107,7 @@ $(".btn-outline-success").on("click", function () {
         X: goast.x,                                     //X座標
         Y: goast.y,                                     //Y座標
         messeage: $("#messeageContent").val(),          //メッセージ
-        read: false                                     //メッセージが読まれたか
+        read: false                                     //メッセージが既読か未読か
     }
 
     data = [];

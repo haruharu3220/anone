@@ -27,8 +27,8 @@ h1 {
 
 .family-picture {
     /* filter: blur(); ~px: ぼかす（にじませる）具合 */
-    filter: blur(6px) brightness(1.1);
     filter: blur(6px) brightness(0.9);
+    /* filter: blur(5px) brightness(0.9); */
     width: 100%;
     height:100vh;
 }

@@ -8,12 +8,9 @@ h1{
   display: flex;
 }
 
-/* .inputMemberName {
-  display: flex;
-  justify-content: center;
-  background: white;
-  width: 50px;
-} */
+.inputMemberName {
+margin-bottom: 5vh;
+} 
 
 .inputMenberInput{
   display: flex;

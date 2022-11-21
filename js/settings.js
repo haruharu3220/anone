@@ -124,31 +124,6 @@ $(".fa-square-plus").on("click", function () {
     familyIndex++;
   })
 
-
-
-  // //下に名前を表示
-  // $('ul').append("<li>" + $("[name=ueserName] option:selected").text() + "</li>");
-
-  // https://www.webopixel.net/javascript/216.html
-
-  // $('li').each(function () {
-  //   $(this).addClass('style-li');
-  // })
-
-
-
-  // ボツになったアイコンたち
-  // $('ul').append("<li><div><i class=\"fa-regular fa-pen-to-square fa-xl\"></i></div></li>");
-  // $('ul').append("<li><div><i class=\"fa-regular fa-circle-xmark fa-xl\"></i></div></li>");
-
-  // https://iwb.jp/jquery-append-dom-nest/
-  // $('ul').append("<div/>")
-  //       .append($(".inputMenberInput").val() + "<li>")
-  //       .append("<li><i class=\"fa-regular fa-pen-to-square fa-xl\"></i>")
-  //       .append("<li><i class=\"fa-regular fa-circle-xmark fa-xl\"></i>");
-
-  //ローカルストレージに名前を追加
-
   let mumber = [];
 
   if (localStorage.getItem("myfamily")) {
