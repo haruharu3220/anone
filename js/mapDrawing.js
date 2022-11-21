@@ -104,7 +104,7 @@ function loop() {
     move(me);
     hasMeeages();
     mapArea2D.fillRect(0, 0, mapArea.width, mapArea.height);
-    mapArea2D.drawImage(scenery04, 0, 0, mapArea.width, mapArea.height );
+    mapArea2D.drawImage(scenery04, 0, 0, mapArea.width, mapArea.height);
     //  自分あてにもらったメッセージを描画
     for (let i = 0; i < receivedMesseagePoint.length; i++) {
         mapArea2D.drawImage(treasure, receivedMesseagePoint[i][0], receivedMesseagePoint[i][1], 32, 32);
@@ -136,10 +136,10 @@ function loop() {
 
     }
 
-    if(me.direction==="front")   mapArea2D.drawImage(me.front, me.x, me.y, 32, 32);
-    if(me.direction==="right")   mapArea2D.drawImage(me.right, me.x, me.y, 32, 32);
-    if(me.direction==="left")   mapArea2D.drawImage(me.left, me.x, me.y, 32, 32);
-    if(me.direction==="back")   mapArea2D.drawImage(me.back, me.x, me.y, 32, 32);
+    if (me.direction === "front") mapArea2D.drawImage(me.front, me.x, me.y, 32, 32);
+    if (me.direction === "right") mapArea2D.drawImage(me.right, me.x, me.y, 32, 32);
+    if (me.direction === "left") mapArea2D.drawImage(me.left, me.x, me.y, 32, 32);
+    if (me.direction === "back") mapArea2D.drawImage(me.back, me.x, me.y, 32, 32);
 
     // console.log("X="+ me.x );
     // console.log("Y="+ me.y );
@@ -161,7 +161,6 @@ function hasMeeages(e) {
     month = date.getMonth() + 1;
     year = date.getFullYear();
     let nowDate = String(year) + String(month) + String(day);
-    // console.log(nowDate + "日");
 
     //自分宛てにメッセージがあればそれを表示
     if (localStorage.getItem("messeages")) {
@@ -176,8 +175,8 @@ function hasMeeages(e) {
         for (let i = 0; i < data.length; i++) {
             //自分宛てのメッセージがあれば（未読）
             if (jsonDataName === data[i].address && data[i].read === false) {
-                if(Number(data[i].sendDate) <= Number(nowDate)){
-                receivedMesseagePoint.push([data[i].X, data[i].Y]);
+                if (Number(data[i].sendDate) <= Number(nowDate)) {
+                    receivedMesseagePoint.push([data[i].X, data[i].Y]);
                 }
             }
 
@@ -185,9 +184,9 @@ function hasMeeages(e) {
             if (jsonDataName === data[i].sender && data[i].read === false) {
 
                 if (Number(data[i].sendDate) > Number(nowDate)) {
-                    console.log("届ける日は"+ Number(data[i].sendDate));
-                    console.log("今日は" +Number(nowDate));
-                    
+                    console.log("届ける日は" + Number(data[i].sendDate));
+                    console.log("今日は" + Number(nowDate));
+
                     sendMesseagePoint.push([data[i].X, data[i].Y, pressRelease.yet]);
                 } else {
                     sendMesseagePoint.push([data[i].X, data[i].Y, pressRelease.done]);
@@ -360,10 +359,19 @@ function getFamilyList(e) {
 //自分宛てメッセージがあるかを調べる関数
 //戻り値：自分宛てのメッセージ番号（ない場合は-1）
 function hasMyMesseage(e) {
+
+    //現在時間を取得
+    let day, month, year;
+    let date = new Date();
+    day = date.getDate();
+    month = date.getMonth() + 1;
+    year = date.getFullYear();
+    let nowDate = String(year) + String(month) + String(day);
+
     //メッセージが宛先関係無く1個もなければ
     if (!localStorage.getItem("messeages")) {
         return -1;
-    //メッセージが1つでもあれば
+        //メッセージが1つでもあれば
     } else {
         const jsonData = localStorage.getItem("messeages");
         const data = JSON.parse(jsonData);
@@ -376,6 +384,7 @@ function hasMyMesseage(e) {
             if (Mumber === data[i].address &&
                 Math.abs(data[i].X - me.x) <= 16 &&
                 Math.abs(data[i].Y - me.y) <= 16 &&
+                Number(data[i].sendDate) <= Number(nowDate) &&
                 data[i].read === false) {
                 return i;
             }
