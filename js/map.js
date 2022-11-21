@@ -32,7 +32,6 @@ function receivedMessegaNumChange(e) {
 //メッセージが来ているか調査する関数
 function receivedMessegaNum() {
     let receivedMessegaNum = 0;
-    console.log("メッセージが来ているか調査する関数");
     if (localStorage.getItem("messeages")) {
         const jsonData = localStorage.getItem("messeages");
         const data = JSON.parse(jsonData);
@@ -88,17 +87,28 @@ $("#btn-usage").on("click", function () {
 
 //置くボタンクリック
 $(".btn-outline-success").on("click", function () {
-    console.log("日時："+ );
+    let day, month, year;
+    let date = new Date($('#messeageBoxWhen').val());
+    day = date.getDate();
+    month = date.getMonth() + 1;
+    year = date.getFullYear();
+    let reservationDate = String(year) + String(month) +String(day);
+    console.log(year + "年");
+    console.log(month + "月");
+    console.log(day + "日");
+    console.log(reservationDate + "日");
+
+
     console.log("置くをボタン押したよ");
     const messeage = {
         address: $("[name=who] option:selected").text(),          //誰宛
         sender: localStorage.getItem("selectedMumber"),//誰から
-        sendDate: $("[name=when] option:selected").text(),       //いつ開封するか
+        sendDate: reservationDate,       //いつ開封するか
         type: $("[name=type] option:selected").text(),           //タイプ
         X: goast.x,                              //X座標
         Y: goast.y,                              //Y座標
         messeage: $("#messeageContent").val(),                     //メッセージ
-        // messeage: "aaa",                      //メッセージデバッグ用
+
         read: false                             //メッセージが読まれたか
     }
     // console.log(messeage);

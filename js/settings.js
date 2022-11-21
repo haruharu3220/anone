@@ -68,7 +68,7 @@ function checkFamily() {
       $("#characterList").append(ul);
       $("#characterList").css("text-align", "center");
 
-      var familyIndex = -4;
+      var familyIndex = -3;
       $('li').each(function () {
         if (familyIndex >= 0) {
           $(this).addClass('style-li');
@@ -114,8 +114,8 @@ $(".fa-square-plus").on("click", function () {
 
 
   //ナビバーのliタグも数えているから5からスタートになる
-  //そのためiを-4にしておく
-  var familyIndex = -4;
+  //そのためiを3にしておく
+  var familyIndex = -3;
   $('li').each(function () {
     if (familyIndex >= 0) {
       $(this).addClass('style-li');
