@@ -88,6 +88,7 @@ $("#btn-usage").on("click", function () {
 
 //置くボタンクリック
 $(".btn-outline-success").on("click", function () {
+    console.log("日時："+ );
     console.log("置くをボタン押したよ");
     const messeage = {
         address: $("[name=who] option:selected").text(),          //誰宛
@@ -96,7 +97,7 @@ $(".btn-outline-success").on("click", function () {
         type: $("[name=type] option:selected").text(),           //タイプ
         X: goast.x,                              //X座標
         Y: goast.y,                              //Y座標
-        messeage: $("#messeageContent").val(),                     //メッセージデバッグ用
+        messeage: $("#messeageContent").val(),                     //メッセージ
         // messeage: "aaa",                      //メッセージデバッグ用
         read: false                             //メッセージが読まれたか
     }
