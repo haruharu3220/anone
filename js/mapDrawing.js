@@ -104,7 +104,7 @@ function loop() {
         if (sendMesseagePoint[i][2] === pressRelease.done) {
             mapArea2D.drawImage(mogu, sendMesseagePoint[i][0], sendMesseagePoint[i][1], 32, 32);
         }
-        
+
     }
     //読まれたメッセージを描画
     for (let i = 0; i < readMesseagePoint.length; i++) {
@@ -145,7 +145,7 @@ function hasMeeages(e) {
     month = date.getMonth() + 1;
     year = date.getFullYear();
     let nowDate = String(year) + String(month) + String(day);
-    console.log(nowDate + "日");
+    // console.log(nowDate + "日");
 
     //自分宛てにメッセージがあればそれを表示
     if (localStorage.getItem("messeages")) {
@@ -269,26 +269,27 @@ function openMeeageBox(e) {
     if (e.keyCode === 13) {
 
         const jsonData = localStorage.getItem("messeages");
-        const jsonDataName = localStorage.getItem("selectedMumber");
+
         const data = JSON.parse(jsonData);
-        const Mumber = localStorage.getItem("selectMumber");
         const i = hasMyMesseage();
         //メッセージがあったら
         if (hasMyMesseage() != -1) {
+            //メッセージ表示用モーダルを表示
             messeageBox2.style.display = 'block';
-            //ここからやる
+
+            //メッセージ内容をHTMLに追加
             $(".receivedWhoContent").text(data[i].sender);
             $(".receivedTypeContent").text(data[i].type);
             $(".receivedContent").text(data[i].messeage);
 
 
-            //呼んだメッセージに更新
+            //メッセージの既読情報を未読から既読に更新
             data[i].read = true;
             const jsonData = JSON.stringify(data);
             localStorage.setItem("messeages", jsonData);
 
 
-
+            //メッセージが無かったら
         } else {
             messeageBox.style.display = 'block';
             getFamilyList();
@@ -323,9 +324,12 @@ function getFamilyList(e) {
 
 
 //自分宛てメッセージがあるかを調べる関数
+//戻り値：自分宛てのメッセージ番号（ない場合は-1）
 function hasMyMesseage(e) {
+    //メッセージが宛先関係無く1個もなければ
     if (!localStorage.getItem("messeages")) {
         return -1;
+    //メッセージが1つでもあれば
     } else {
         const jsonData = localStorage.getItem("messeages");
         const data = JSON.parse(jsonData);
@@ -333,21 +337,17 @@ function hasMyMesseage(e) {
 
         //メッセージを検索
         for (let i = 0; i < data.length; i++) {
-            console.log("★" + data.length);
-            //自分宛てなら
+            //自分宛て　＆＆　未読　＆＆
             //メッセージボックスの座標とずれが少なければ
             if (Mumber === data[i].address &&
                 Math.abs(data[i].X - goast.x) <= 16 &&
                 Math.abs(data[i].Y - goast.y) <= 16 &&
                 data[i].read === false) {
-                console.log("★Step3");
                 return i;
             }
         }
-
         return -1;
     }
-
 }
 
 

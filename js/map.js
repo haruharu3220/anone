@@ -14,19 +14,14 @@ receivedMessegaNumDisplay();
 function receivedMessegaNumDisplay() {
     $(".remainingmMessage").text("");
     $(".remainingmMessage").text("あなたに届いた宝物は \" " + receivedMessegaNum() + " \"個です");
-
 }
-
+//エンターキーを押したときにメッセージ数を更新する
 addEventListener('keydown', receivedMessegaNumChange);
 function receivedMessegaNumChange(e) {
     if (e.keyCode === 13) {
-
         receivedMessegaNumDisplay();
     }
 }
-
-
-
 
 
 //メッセージが来ているか調査する関数
@@ -57,29 +52,19 @@ function selectedMember() {
 }
 
 
-
-$(".btn-comment").on("click", function () {
-    console.log("コメントボタン押したよ");
-
-});
-
-
-$(".btn-logout").on("click", function () {
-    console.log("ログアウトボタン押したよ");
-    location.href = "../html/login.html";
-});
-
+//ログアウトボタンをクリック
 $(".btn-returnTop").on("click", function () {
     console.log("TOPに戻るボタン押したよ");
     location.href = "../index.html";
 });
 
+//履歴ボタンをクリック
 $(".btn-history").on("click", function () {
     console.log("履歴ボタン押したよ");
     location.href = "../html/history.html";
 });
 
-
+//使い方ページをクリック
 $("#btn-usage").on("click", function () {
     console.log("設定ボタン押したよ");
     location.href = "../html/usage.html";
@@ -100,18 +85,17 @@ $(".btn-outline-success").on("click", function () {
 
 
     console.log("置くをボタン押したよ");
+    //データを作成
     const messeage = {
-        address: $("[name=who] option:selected").text(),          //誰宛
-        sender: localStorage.getItem("selectedMumber"),//誰から
-        sendDate: reservationDate,       //いつ開封するか
-        type: $("[name=type] option:selected").text(),           //タイプ
-        X: goast.x,                              //X座標
-        Y: goast.y,                              //Y座標
-        messeage: $("#messeageContent").val(),                     //メッセージ
-
-        read: false                             //メッセージが読まれたか
+        address: $("[name=who] option:selected").text(),//誰宛
+        sender: localStorage.getItem("selectedMumber"), //誰から
+        sendDate: reservationDate,                      //いつ開封するか
+        type: $("[name=type] option:selected").text(),  //タイプ
+        X: goast.x,                                     //X座標
+        Y: goast.y,                                     //Y座標
+        messeage: $("#messeageContent").val(),          //メッセージ
+        read: false                                     //メッセージが読まれたか
     }
-    // console.log(messeage);
 
     data = [];
     if (localStorage.getItem("messeages")) {
@@ -143,39 +127,3 @@ $(".btn-outline-secondary").on("click", function () {
     messeageBox2.style.display = 'none';
 });
 
-
-
-
-// 今は亡きボツコード集
-// 使えるかもだから取っておく
-
-// ①Areaをクリックしたとき座標を取得
-// $("#mapArea").on("click", function (e) {
-//     console.log("クリックしたよ");
-//     // クリック位置の座標計算（canvasの左上を基準。-2ずつしているのはborderの分）
-
-//     var rect = e.target.getBoundingClientRect();
-//     makeMapAreaX = e.clientX - Math.floor(rect.left);
-//     makeMapAreaY = e.clientY - Math.floor(rect.top);
-
-//     console.log("X=" + makeMapAreaX);
-//     console.log("Y=" + makeMapAreaY);
-
-//     const position = {
-//         X: makeMapAreaX,
-//         Y: makeMapAreaY
-//     }
-//     positions[i] = position;
-//     i++;
-//     const jsonPositions = JSON.stringify(positions);
-//     localStorage.setItem("positions", jsonPositions);
-
-//     //デバッグ用
-//     const jsonData = localStorage.getItem("positions");
-//     const data = JSON.parse(jsonData);
-
-//     //const XY = String(data[0].X)+String(data[0].Y);
-//     //console.log(XY + "←XY連結した文字列だよ～");
-
-//     // console.log(data[2].X + "←data[2].X読み取ったよ～");
-// });
