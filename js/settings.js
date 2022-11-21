@@ -68,7 +68,7 @@ function checkFamily() {
       $("#characterList").append(ul);
       $("#characterList").css("text-align", "center");
 
-      var familyIndex = -3;
+      var familyIndex = -2;
       $('li').each(function () {
         if (familyIndex >= 0) {
           $(this).addClass('style-li');
@@ -115,7 +115,7 @@ $(".fa-square-plus").on("click", function () {
 
   //ナビバーのliタグも数えているから5からスタートになる
   //そのためiを3にしておく
-  var familyIndex = -3;
+  var familyIndex = -2;
   $('li').each(function () {
     if (familyIndex >= 0) {
       $(this).addClass('style-li');
@@ -148,7 +148,6 @@ $(".fa-square-plus").on("click", function () {
 
 //キャラ選択ボタン→各キャラ分作成必要あり
 $("body").on("click", ".style-li", function () {
-
   //ログインモーダル表示
   $(".selectedMumer").text("");
   $(".selectedMumer").append($(this).text());

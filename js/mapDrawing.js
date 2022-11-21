@@ -9,12 +9,20 @@ var mapArea2D = mapArea.getContext('2d');
 
 
 //キャラクターのImageオブジェクトを作る
-var goast = new Object();
-goast.img = new Image();
-goast.img.src = '../res/goast.png';
-goast.x = 35;
-goast.y = 100;
-goast.move = 0;
+var me = new Object();
+me.front = new Image();
+me.front.src = '../res/my_front.png';
+me.right = new Image();
+me.right.src = '../res/my_right.png';
+me.left = new Image();
+me.left.src = '../res/my_left.png';
+me.back = new Image();
+me.back.src = '../res/my_back.png';
+
+me.x = 35;
+me.y = 100;
+me.move = 0;
+me.direction = "front";
 
 //キーボードのオブジェクトを作成
 var key = new Object();
@@ -88,7 +96,7 @@ scenery04.onload = function () {
 //☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
 function loop() {
 
-    move(goast);
+    move(me);
     hasMeeages();
     mapArea2D.fillRect(0, 0, mapArea.width, mapArea.height);
 
@@ -123,10 +131,13 @@ function loop() {
 
     }
 
-    mapArea2D.drawImage(goast.img, goast.x, goast.y, 32, 32);
+    if(me.direction==="front")   mapArea2D.drawImage(me.front, me.x, me.y, 32, 32);
+    if(me.direction==="right")   mapArea2D.drawImage(me.right, me.x, me.y, 32, 32);
+    if(me.direction==="left")   mapArea2D.drawImage(me.left, me.x, me.y, 32, 32);
+    if(me.direction==="back")   mapArea2D.drawImage(me.back, me.x, me.y, 32, 32);
 
-    // console.log("X="+ goast.x );
-    // console.log("Y="+ goast.y );
+    // console.log("X="+ me.x );
+    // console.log("Y="+ me.y );
     requestAnimationFrame(loop);
 }
 addEventListener('load', loop(), false);
@@ -204,14 +215,19 @@ function move(Object) {
     }
     if (Object.move > 0) {
         Object.move -= 4;
-        if (key.push === 'left') Object.x -= 4;
+        if (key.push === 'left') {
+            Object.x -= 4;
+        }
         if (key.push === 'up') {
             Object.y -= 4;
 
         }
-        if (key.push === 'right') Object.x += 4;
-        if (key.push === 'down') Object.y += 4;
-
+        if (key.push === 'right') {
+            Object.x += 4;
+        }
+        if (key.push === 'down') {
+            Object.y += 4;
+        }
     }
     mapArea2D.fillStyle = "lightpink";
     mapArea2D.fillRect(0, 0, mapArea.width, mapArea.height);
@@ -224,18 +240,23 @@ function keydownfunc02(event) {
     if (key_code === 37) {
         key.left = true;
         key.push = "left"
+        me.direction = "left";
+
     }
     if (key_code === 38) {
         key.up = true;
         key.push = "up"
+        me.direction = "back";
     }
     if (key_code === 39) {
         key.right = true;
         key.push = "right";
+        me.direction = "right";
     }
     if (key_code === 40) {
         key.down = true;
         key.push = "down";
+        me.direction = "front";
     }
     event.preventDefault();
 }
@@ -340,8 +361,8 @@ function hasMyMesseage(e) {
             //自分宛て　＆＆　未読　＆＆
             //メッセージボックスの座標とずれが少なければ
             if (Mumber === data[i].address &&
-                Math.abs(data[i].X - goast.x) <= 16 &&
-                Math.abs(data[i].Y - goast.y) <= 16 &&
+                Math.abs(data[i].X - me.x) <= 16 &&
+                Math.abs(data[i].Y - me.y) <= 16 &&
                 data[i].read === false) {
                 return i;
             }
