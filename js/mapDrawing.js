@@ -235,11 +235,17 @@ function openMeeageBox(e) {
 
 //家族一覧を取得して選択肢に追加
 function getFamilyList(e) {
+    var select = document.getElementById("messeageBoxWho");
+    if($('select#messeageBoxWho option')){
+        console.log("選択肢がすでにあるよ");
+        $('select#messeageBoxWho option').remove();
+    }
+
     if (localStorage.getItem("myfamily")) {
         const jsonData = localStorage.getItem("myfamily");
         const data = JSON.parse(jsonData);
         for (let i = 0; i < data.length; i++) {
-            var select = document.getElementById("messeageBoxWho");
+            
             var option = document.createElement("option");
             option.text = data[i];
             option.value = data[i];
