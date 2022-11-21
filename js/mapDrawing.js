@@ -34,8 +34,19 @@ var mogu = new Image();
 mogu.src = '../res/mogumogu.png';
 
 //花(読まれたメッセージ)のオブジェクト生成
-var flower = new Image();
-flower.src = '../res/red_flower.png';
+var flower_red = new Image();
+flower_red.src = '../res/red_flower.png';
+
+var flower_orange = new Image();
+flower_orange.src = '../res/orenge_flower.png';
+
+var flower_pink = new Image();
+flower_pink.src = '../res/pink_flower.png';
+
+var flower_yellow = new Image();
+flower_yellow.src = '../res/yellow_flower.png';
+
+
 
 //背景画像のオブジェクトを作成
 var scenery04 = new Image();
@@ -49,6 +60,14 @@ let sendMesseagePoint = [];
 let readMesseagePoint = [];
 
 
+//花の種類のENUM
+let flower = {
+    free: 1,
+    request: 2,
+    consultation: 3,
+    sharing: 4,
+};
+
 hasMeeages();
 scenery04.onload = function () {
     mapArea2D.drawImage(scenery04, 0, 0, mapArea.width, mapArea.height * mapArea.width / scenery04.width);
@@ -57,7 +76,6 @@ scenery04.onload = function () {
 //描画用ループ関数
 
 function loop() {
-
 
     move(goast);
     hasMeeages();
@@ -73,7 +91,19 @@ function loop() {
     }
     //読まれたメッセージを描画
     for (let i = 0; i < readMesseagePoint.length; i++) {
-        mapArea2D.drawImage(flower, readMesseagePoint[i][0], readMesseagePoint[i][1], 32, 32);
+        if (readMesseagePoint[i][2] === flower.free) {
+            mapArea2D.drawImage(flower_red, readMesseagePoint[i][0], readMesseagePoint[i][1], 32, 32);
+        }
+        if (readMesseagePoint[i][2] === flower.request) {
+            mapArea2D.drawImage(flower_orange, readMesseagePoint[i][0], readMesseagePoint[i][1], 32, 32);
+        }
+        if (readMesseagePoint[i][2] === flower.consultation) {
+            mapArea2D.drawImage(flower_pink, readMesseagePoint[i][0], readMesseagePoint[i][1], 32, 32);
+        }
+        if (readMesseagePoint[i][2] === flower.sharing) {
+            mapArea2D.drawImage(flower_yellow, readMesseagePoint[i][0], readMesseagePoint[i][1], 32, 32);
+        }
+
     }
 
     mapArea2D.drawImage(goast.img, goast.x, goast.y, 32, 32);
@@ -102,7 +132,7 @@ function hasMeeages(e) {
 
         for (let i = 0; i < data.length; i++) {
             //自分宛てのメッセージがあれば（未読）
-            if (jsonDataName === data[i].address && data[i].read===false) {
+            if (jsonDataName === data[i].address && data[i].read === false) {
                 receivedMesseagePoint.push([data[i].X, data[i].Y]);
             }
             if (jsonDataName === data[i].sender && data[i].read === false) {
@@ -110,7 +140,10 @@ function hasMeeages(e) {
             }
 
             if (jsonDataName === data[i].sender && data[i].read === true) {
-                readMesseagePoint.push([data[i].X, data[i].Y]);
+                if (data[i].type === "フリー") readMesseagePoint.push([data[i].X, data[i].Y, flower.free]);
+                if (data[i].type === "依頼") readMesseagePoint.push([data[i].X, data[i].Y, flower.request]);
+                if (data[i].type === "相談") readMesseagePoint.push([data[i].X, data[i].Y, flower.consultation]);
+                if (data[i].type === "情報共有") readMesseagePoint.push([data[i].X, data[i].Y, flower.sharing]);
             }
 
         }
@@ -214,8 +247,8 @@ function openMeeageBox(e) {
             $(".receivedWhoContent").text(data[i].sender);
             $(".receivedTypeContent").text(data[i].type);
             $(".receivedContent").text(data[i].messeage);
-            
-            
+
+
             //呼んだメッセージに更新
             data[i].read = true;
             const jsonData = JSON.stringify(data);
@@ -236,7 +269,7 @@ function openMeeageBox(e) {
 //家族一覧を取得して選択肢に追加
 function getFamilyList(e) {
     var select = document.getElementById("messeageBoxWho");
-    if($('select#messeageBoxWho option')){
+    if ($('select#messeageBoxWho option')) {
         console.log("選択肢がすでにあるよ");
         $('select#messeageBoxWho option').remove();
     }
@@ -245,7 +278,7 @@ function getFamilyList(e) {
         const jsonData = localStorage.getItem("myfamily");
         const data = JSON.parse(jsonData);
         for (let i = 0; i < data.length; i++) {
-            
+
             var option = document.createElement("option");
             option.text = data[i];
             option.value = data[i];
