@@ -32,6 +32,10 @@ treasure.src = '../res/treasure.png';
 //もぐら(送ったメッセージ)のオブジェクト生成
 var mogu = new Image();
 mogu.src = '../res/mogumogu.png';
+var rest = new Image();
+rest.src = '../res/rest.png';
+
+
 
 //花(読まれたメッセージ)のオブジェクト生成
 var flower_red = new Image();
@@ -68,13 +72,20 @@ let flower = {
     sharing: 4,
 };
 
+//日時のENUM
+let pressRelease = {
+    yet: 1,
+    done: 2,
+};
+
 hasMeeages();
 scenery04.onload = function () {
     mapArea2D.drawImage(scenery04, 0, 0, mapArea.width, mapArea.height * mapArea.width / scenery04.width);
 }
 
+//☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
 //描画用ループ関数
-
+//☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
 function loop() {
 
     move(goast);
@@ -87,7 +98,13 @@ function loop() {
     }
     //送ったメッセージを描画
     for (let i = 0; i < sendMesseagePoint.length; i++) {
-        mapArea2D.drawImage(mogu, sendMesseagePoint[i][0], sendMesseagePoint[i][1], 32, 32);
+        if (sendMesseagePoint[i][2] === pressRelease.yet) {
+            mapArea2D.drawImage(rest, sendMesseagePoint[i][0], sendMesseagePoint[i][1], 32, 32);
+        }
+        if (sendMesseagePoint[i][2] === pressRelease.done) {
+            mapArea2D.drawImage(mogu, sendMesseagePoint[i][0], sendMesseagePoint[i][1], 32, 32);
+        }
+        
     }
     //読まれたメッセージを描画
     for (let i = 0; i < readMesseagePoint.length; i++) {
@@ -120,6 +137,16 @@ addEventListener("keyup", keyupfunc02, false);
 //メッセージがあるか判定
 addEventListener('keydown', openMeeageBox);
 function hasMeeages(e) {
+
+    //現在時間を取得
+    let day, month, year;
+    let date = new Date();
+    day = date.getDate();
+    month = date.getMonth() + 1;
+    year = date.getFullYear();
+    let nowDate = String(year) + String(month) + String(day);
+    console.log(nowDate + "日");
+
     //自分宛てにメッセージがあればそれを表示
     if (localStorage.getItem("messeages")) {
         const jsonData = localStorage.getItem("messeages");
@@ -136,7 +163,13 @@ function hasMeeages(e) {
                 receivedMesseagePoint.push([data[i].X, data[i].Y]);
             }
             if (jsonDataName === data[i].sender && data[i].read === false) {
-                sendMesseagePoint.push([data[i].X, data[i].Y]);
+
+                if (Number(data[i].sendDate) > Number(nowDate)) {
+                    sendMesseagePoint.push([data[i].X, data[i].Y, pressRelease.yet]);
+                } else {
+                    sendMesseagePoint.push([data[i].X, data[i].Y, pressRelease.done]);
+                }
+
             }
 
             if (jsonDataName === data[i].sender && data[i].read === true) {
