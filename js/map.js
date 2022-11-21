@@ -9,42 +9,34 @@ let positions = [];
 let i = 0;
 
 
-//受け取ったメッセージ数を表示する関数
+//受け取ったメッセージ数を表示する関数　1秒ごとに更新
 $(function () {
-    setInterval(function() {
-            console.log("繰り返しています。");
-            $(".remainingmMessage").text("");
-            $(".remainingmMessage").text("あなたに届いた宝物は \" " + receivedMessegaNum() + " \"個です");
-        }, 1000);
-    });
+    setInterval(function () {
+        console.log("繰り返しています。");
+        $(".remainingmMessage").text("");
+        $(".remainingmMessage").text("あなたに届いた宝物は \" " + receivedMessegaNum() + " \"個です");
+    }, 1000);
+});
 
-
-// $(function () {
-//     receivedMessegaNumDisplay(function() {
-//         $(".remainingmMessage").text("");
-//         $(".remainingmMessage").text("あなたに届いた宝物は \" " + receivedMessegaNum() + " \"個です");
-//     }, 3000);
-// });
-
-
-
-// //エンターキーを押したときにメッセージ数を更新する
-// addEventListener('keydown', receivedMessegaNumChange);
-// function receivedMessegaNumChange(e) {
-//     if (e.keyCode === 13) {
-//         receivedMessegaNumDisplay();
-//     }
-// }
 
 
 //メッセージが来ているか調査する関数
 function receivedMessegaNum() {
     let receivedMessegaNum = 0;
+    let day, month, year;
+    let date = new Date();
+    day = date.getDate();
+    month = date.getMonth() + 1;
+    year = date.getFullYear();
+    let nowDate = String(year) + String(month) + String(day);
+
     if (localStorage.getItem("messeages")) {
         const jsonData = localStorage.getItem("messeages");
         const data = JSON.parse(jsonData);
         for (let i = 0; i < data.length; i++) {
-            if (data[i].address === selectedMember() && data[i].read === false) {
+            if (data[i].address === selectedMember() &&
+                data[i].read === false &&
+                Number(data[i].sendDate) <= Number(nowDate)) {
                 receivedMessegaNum++;
             }
         }
@@ -91,11 +83,6 @@ $(".btn-outline-success").on("click", function () {
     month = date.getMonth() + 1;
     year = date.getFullYear();
     let reservationDate = String(year) + String(month) + String(day);
-    console.log(year + "年");
-    console.log(month + "月");
-    console.log(day + "日");
-    console.log(reservationDate + "日");
-
 
     console.log("置くをボタン押したよ");
     //データを作成

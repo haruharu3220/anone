@@ -184,8 +184,8 @@ function hasMeeages(e) {
             if (jsonDataName === data[i].sender && data[i].read === false) {
 
                 if (Number(data[i].sendDate) > Number(nowDate)) {
-                    console.log("届ける日は" + Number(data[i].sendDate));
-                    console.log("今日は" + Number(nowDate));
+                    // console.log("届ける日は" + Number(data[i].sendDate));
+                    // console.log("今日は" + Number(nowDate));
 
                     sendMesseagePoint.push([data[i].X, data[i].Y, pressRelease.yet]);
                 } else {
