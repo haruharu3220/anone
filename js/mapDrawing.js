@@ -19,8 +19,8 @@ me.left.src = '../res/my_left.png';
 me.back = new Image();
 me.back.src = '../res/my_back.png';
 
-me.x = 35;
-me.y = 100;
+me.x = 70;
+me.y = 400;
 me.move = 0;
 me.direction = "front";
 
@@ -87,6 +87,7 @@ let pressRelease = {
 };
 
 hasMeeages();
+
 scenery04.onload = function () {
     mapArea2D.drawImage(scenery04, 0, 0, mapArea.width, mapArea.height * mapArea.width / scenery04.width);
 }
@@ -95,11 +96,13 @@ scenery04.onload = function () {
 //描画用ループ関数
 //☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
 function loop() {
-
+    // fillStyle = scenery04.onload;
+    //mapArea2D.drawImage(scenery04, 0, 0, mapArea.width, mapArea.height * mapArea.width / scenery04.width);
+    //mapArea2D.drawImage(scenery04, 10, 30, 100, 100);
     move(me);
     hasMeeages();
     mapArea2D.fillRect(0, 0, mapArea.width, mapArea.height);
-
+    mapArea2D.drawImage(scenery04, 0, 0, mapArea.width, mapArea.height );
     //  自分あてにもらったメッセージを描画
     for (let i = 0; i < receivedMesseagePoint.length; i++) {
         mapArea2D.drawImage(treasure, receivedMesseagePoint[i][0], receivedMesseagePoint[i][1], 32, 32);
@@ -229,6 +232,7 @@ function move(Object) {
             Object.y += 4;
         }
     }
+    //mapArea2D.fillStyle = scenery04.onload;
     mapArea2D.fillStyle = "lightpink";
     mapArea2D.fillRect(0, 0, mapArea.width, mapArea.height);
 }

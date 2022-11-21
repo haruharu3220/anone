@@ -104,8 +104,8 @@ $(".btn-outline-success").on("click", function () {
         sender: localStorage.getItem("selectedMumber"), //誰から
         sendDate: reservationDate,                      //いつ開封するか
         type: $("[name=type] option:selected").text(),  //タイプ
-        X: goast.x,                                     //X座標
-        Y: goast.y,                                     //Y座標
+        X: me.x,                                     //X座標
+        Y: me.y,                                     //Y座標
         messeage: $("#messeageContent").val(),          //メッセージ
         read: false                                     //メッセージが既読か未読か
     }
