@@ -8,72 +8,94 @@ let mapAreaY = 0; //クリックしたY座標
 let positions = [];
 let i = 0;
 
-function countRemainingmMessage() {
 
+//受け取ったメッセージ数を表示する関数　1秒ごとに更新
+$(function () {
+    setInterval(function () {
+        console.log("繰り返しています。");
+        $(".remainingmMessage").text("");
+        $(".remainingmMessage").text("あなたに届いた宝物は \" " + receivedMessegaNum() + " \"個です");
+    }, 1000);
+});
+
+
+
+//メッセージが来ているか調査する関数
+function receivedMessegaNum() {
+    let receivedMessegaNum = 0;
+    let day, month, year;
+    let date = new Date();
+    day = date.getDate();
+    month = date.getMonth() + 1;
+    year = date.getFullYear();
+    let nowDate = String(year) + String(month) + String(day);
+
+    if (localStorage.getItem("messeages")) {
+        const jsonData = localStorage.getItem("messeages");
+        const data = JSON.parse(jsonData);
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].address === selectedMember() &&
+                data[i].read === false &&
+                Number(data[i].sendDate) <= Number(nowDate)) {
+                receivedMessegaNum++;
+            }
+        }
+    }
+    return receivedMessegaNum;
 }
+
+//選択中のキャラを表示する関数
 selectedMemberDisplay();
-
-selectedMemberDisplayTop();
-
-function selectedMemberDisplayTop(){
-    const Mumber = localStorage.getItem("selectedMumber");
-    console.log("あなたは"+Mumber);
-    $(".selectedMumer").text("あなたは　\"" + Mumber + "\"　です");
-}
-
-//選択中のキャラを表示
-
 function selectedMemberDisplay() {
-    const Mumber = localStorage.getItem("selectMumber");
-    const jsonData2 = localStorage.getItem("memo");
-    const data = JSON.parse(jsonData2);
-    $(".selectedMumer").append(Mumber);
+    $(".selectedMumer").text("あなたは　\"" + selectedMember() + "\"　です");
+}
 
-    return (data[Mumber]);
+//選択中のキャラ名を取得する関数
+function selectedMember() {
+    const Mumber = localStorage.getItem("selectedMumber");
+    return Mumber;
 }
 
 
-
-
-
-
-$(".btn-comment").on("click", function () {
-    console.log("コメントボタン押したよ");
-
-});
-
-
-$(".btn-logout").on("click", function () {
-    console.log("ログアウトボタン押したよ");
-    location.href = "../html/login.html";
-});
-
+//ログアウトボタンをクリック
 $(".btn-returnTop").on("click", function () {
     console.log("TOPに戻るボタン押したよ");
     location.href = "../index.html";
 });
 
+//履歴ボタンをクリック
 $(".btn-history").on("click", function () {
     console.log("履歴ボタン押したよ");
     location.href = "../html/history.html";
 });
 
-
+//使い方ページをクリック
+$("#btn-usage").on("click", function () {
+    console.log("設定ボタン押したよ");
+    location.href = "../html/usage.html";
+});
 
 //置くボタンクリック
-$(".commentDone").on("click", function () {
+$(".btn-outline-success").on("click", function () {
+    let day, month, year;
+    let date = new Date($('#messeageBoxWhen').val());
+    day = date.getDate();
+    month = date.getMonth() + 1;
+    year = date.getFullYear();
+    let reservationDate = String(year) + String(month) + String(day);
+
     console.log("置くをボタン押したよ");
+    //データを作成
     const messeage = {
-        address: $("[name=who] option:selected").text(),          //誰宛
-        sender: localStorage.getItem("selectMumber"),//誰から
-        sendDate: $("[name=when] option:selected").text(),       //いつ開封するか
-        type: $("[name=type] option:selected").text(),           //タイプ
-        X: goast.x,                              //X座標
-        Y: goast.y,                              //Y座標
-        // messeage:("#messeageBoxWho").val(),                     //メッセージデバッグ用
-        messeage: "aaa"                          //メッセージデバッグ用
+        address: $("[name=who] option:selected").text(),//誰宛
+        sender: localStorage.getItem("selectedMumber"), //誰から
+        sendDate: reservationDate,                      //いつ開封するか
+        type: $("[name=type] option:selected").text(),  //タイプ
+        X: me.x,                                     //X座標
+        Y: me.y,                                     //Y座標
+        messeage: $("#messeageContent").val(),          //メッセージ
+        read: false                                     //メッセージが既読か未読か
     }
-    // console.log(messeage);
 
     data = [];
     if (localStorage.getItem("messeages")) {
@@ -92,68 +114,16 @@ $(".commentDone").on("click", function () {
     messeageBox.style.display = 'none';
 });
 
-//メッセージが来ているか調査する関数
-putMessega();
-function putMessega() {
-    console.log("メッセージが来ているか調査する関数");
-    if (localStorage.getItem("messeages")) {
-        const jsonData = localStorage.getItem("messeages");
-        const data = JSON.parse(jsonData);
-        // https://www.flatflag.nir87.com/select-2-1240#value-3
-        // console.log(data[2]);
-        // console.log(data[2].sender + "さんから届きました。");
-
-        // console.log(data[2].type + "です");
-        // console.log(data[2].messeage);
-        for (let i = 0; i < data.length; i++) {
-            // if(localStorage.getItem("selectMumber")=== data[i].address){
-
-            // alert("メッセージが届いているよ");
-            // alert(data[i].sender +"さんから届きました。");
-            // alert(data[i].type +"です");
-            // alert(data[i].messeage);
-            // }
-        }
-    }
-
-}
 
 
+//×アイコンボタンクリック
+$(".fa-circle-xmark").on("click", function () {
+    messeageBox.style.display = 'none';
+    messeageBox2.style.display = 'none';
+});
 
+//閉じるボタンクリック
+$(".btn-outline-secondary").on("click", function () {
+    messeageBox2.style.display = 'none';
+});
 
-
-
-
-// 今は亡きボツコード集
-// 使えるかもだから取っておく
-
-// ①Areaをクリックしたとき座標を取得
-// $("#mapArea").on("click", function (e) {
-//     console.log("クリックしたよ");
-//     // クリック位置の座標計算（canvasの左上を基準。-2ずつしているのはborderの分）
-
-//     var rect = e.target.getBoundingClientRect();
-//     makeMapAreaX = e.clientX - Math.floor(rect.left);
-//     makeMapAreaY = e.clientY - Math.floor(rect.top);
-
-//     console.log("X=" + makeMapAreaX);
-//     console.log("Y=" + makeMapAreaY);
-
-//     const position = {
-//         X: makeMapAreaX,
-//         Y: makeMapAreaY
-//     }
-//     positions[i] = position;
-//     i++;
-//     const jsonPositions = JSON.stringify(positions);
-//     localStorage.setItem("positions", jsonPositions);
-
-//     //デバッグ用
-//     const jsonData = localStorage.getItem("positions");
-//     const data = JSON.parse(jsonData);
-
-//     //const XY = String(data[0].X)+String(data[0].Y);
-//     //console.log(XY + "←XY連結した文字列だよ～");
-
-//     // console.log(data[2].X + "←data[2].X読み取ったよ～");
-// });

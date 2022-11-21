@@ -17,145 +17,149 @@
 // 
 
 
-let member = [];
-let i = 0;
-//家族を追加する
-$(".btn-save").on("click", function () {
-  console.log("保存に戻るボタン押したよ");
-  //名前を下に表示
-  // $('ul').append("<div class=\"member\" id = \"menber0\"><li>" + $(".inputMenberInput").val() +"</li></div>");
-  $('ul').append("<div class=\"member\">テスト</div>");
-  $(".member").css("color", "red");
-  $(".member").css("width", "30vw");
-  $(".member").css("height", "5vh");
-  $(".member").css("background-color", "white");
-  $(".member").css("margin", "5px");
-
-  const memberName = $(".inputMenberInput").val();
-  member.push(memberName);
-  console.log(member); //ここまでできている
-  const jsonData = JSON.stringify(member);
-
-  localStorage.setItem("memo", jsonData);
-});
-
-
-$("body").on("click", ".member", function () {
-  const test = $(this).attr('class');
-  console.log("押したよtest|||" + test);
-  const selectMember = $("." + test).val();
-  console.log("押したよtest2" + selectMember);
-
-  console.log("押したよ" + $(this).attr('class'));
-  console.log("押したよ" + selectMember);
-});
 
 
 
-
-
+//デバッグ用ボタン→ローカルストレージの中身を消去
 $(".btn-reset").on("click", function () {
   console.log("resetボタン押したよ");
+
+
+  if (localStorage.getItem("myfamily")) {
+    const jsonData = localStorage.getItem("myfamily");
+    const data = JSON.parse(jsonData);
+    for (let i = 0; i < data.length; i++) {
+      $("#style-li" + i).remove();
+    }
+  }
+
   localStorage.clear()
   member.splice(0);
 });
 
-$(".btn-getter").on("click", function () {
-  console.log("getterボタン押したよ");
 
-});
 
-$(".btn-returnTop").on("click", function () {
+
+
+//TOPに戻るボタン
+$("#btn-top").on("click", function () {
   console.log("TOPに戻るボタン押したよ");
   location.href = "../index.html";
 });
 
 
-$(".btn-login").on("click", function () {
+//ログイン画面
+$(".btn-outline-success").on("click", function () {
   console.log("loginボタン押したよ");
-
-
-
-
   location.href = "../html/map.html";
 });
 
+checkFamily();
+function checkFamily() {
+  if (localStorage.getItem("myfamily")) {
+    const jsonData = localStorage.getItem("myfamily");
+    const data = JSON.parse(jsonData);
+    for (let i = 0; i < data.length; i++) {
+      const ul = document.getElementById("characterList");
+      const li = document.createElement("li");
+      const text = document.createTextNode(data[i]);
+      li.appendChild(text);
+      ul.appendChild(li);
+      $("#characterList").append(ul);
+      $("#characterList").css("text-align", "center");
 
-$(".btn-login").on("click", function () {
-  console.log("loginボタン押したよ");
-  const text =  $("[name=ueserName] option:selected").text();
-  localStorage.setItem("selectedMumber", text);
-  location.href = "../html/map.html";
-});
+      var familyIndex = -2;
+      $('li').each(function () {
+        if (familyIndex >= 0) {
+          $(this).addClass('style-li');
+          $(this).addClass('style-li' + familyIndex);
+        }
+        familyIndex++;
+      })
+
+    }
+  }
+}
 
 
-//プラスボタンクリック
+//プラスボタン（家族登録）クリック
 $(".fa-square-plus").on("click", function () {
-  console.log("家族追加ボタン押したよ");
+  console.log("家族登録ボタン押したよ");
 
-  //下に名前を表示
-  $('ul').append("<li>" + $("[name=ueserName] option:selected").text() + "</li>");
-
-  // https://www.webopixel.net/javascript/216.html
-  // var i = 1;
-  // $('li').each(function () {
-  //   $(this).addClass('style-li' + i);
-  //   i++;
+  // if (localStorage.getItem("myfamily")) {
+  //   const jsonData = localStorage.getItem("myfamily");
+  //   const data = JSON.parse(jsonData);
+  //   for(let i=0;i<data.length;i++){
+  //     const ul = document.getElementById("characterList");
+  //     const li = document.createElement("li");
+  //     const text = document.createTextNode(data[i]);
+  //     li.appendChild(text);
+  //     ul.appendChild(li);
+  //     $("#characterList").append(ul);
+  //     $("#characterList").css("text-align","center");
+  //   }
   // }
+
+
+  const ul = document.getElementById("characterList");
+  const li = document.createElement("li");
+  const text = document.createTextNode($(".inputMenberInput").val());
+
+  li.appendChild(text);
+  // console.log(li);
+  ul.appendChild(li);
+
+  // $("#characterList").append(ul);
+  $("#characterList").css("text-align", "center");
+
+
+  //ナビバーのliタグも数えているから5からスタートになる
+  //そのためiを3にしておく
+  var familyIndex = -2;
   $('li').each(function () {
+    if (familyIndex >= 0) {
       $(this).addClass('style-li');
+      $(this).addClass('style-li' + familyIndex);
+    }
+    familyIndex++;
   })
-
-
-
-// ボツになったアイコンたち
-  // $('ul').append("<li><div><i class=\"fa-regular fa-pen-to-square fa-xl\"></i></div></li>");
-  // $('ul').append("<li><div><i class=\"fa-regular fa-circle-xmark fa-xl\"></i></div></li>");
-
-  // https://iwb.jp/jquery-append-dom-nest/
-  // $('ul').append("<div/>")
-  //       .append($(".inputMenberInput").val() + "<li>")
-  //       .append("<li><i class=\"fa-regular fa-pen-to-square fa-xl\"></i>")
-  //       .append("<li><i class=\"fa-regular fa-circle-xmark fa-xl\"></i>");
-
-  //ローカルストレージに名前を追加
 
   let mumber = [];
 
-  if (localStorage.getItem("memo")) {
-    const jsonData = localStorage.getItem("memo");
+  if (localStorage.getItem("myfamily")) {
+    const jsonData = localStorage.getItem("myfamily");
     const data = JSON.parse(jsonData);
     data.push($(".inputMenberInput").val());
     const jsonData2 = JSON.stringify(data);
-    localStorage.setItem("memo", jsonData2);
+    localStorage.setItem("myfamily", jsonData2);
   } else {
     const memberName = $(".inputMenberInput").val();
     mumber.push(memberName);
     const jsonData2 = JSON.stringify(mumber);
-    localStorage.setItem("memo", jsonData2);
+    localStorage.setItem("myfamily", jsonData2);
   }
+
+
+
+  //追加後、入力フォーム初期化
+  $(".inputMenberInput").val("");
 });
-
-
-
 
 
 //キャラ選択ボタン→各キャラ分作成必要あり
 $("body").on("click", ".style-li", function () {
-
-  // console.log("押したよtest|||" + $(".style-li1").text());
-  // const jsonData = localStorage.getItem("memo");
-  // const data = JSON.parse(jsonData);
-  // console.log(data);
-  // console.log(data.length);
-  // for (let i = 0; i < data.length; i++) {
-  //   // console.log("ここ");
-  //   if (data[i] === $(".style-li1").text()) {
-  //     localStorage.setItem("selectMumber", i);
-
-  //   }
-  // }
   //ログインモーダル表示
+  $(".selectedMumer").text("");
+  $(".selectedMumer").append($(this).text());
+  localStorage.setItem("selectedMumber", $(this).text());
   loginModal.style.display = 'block';
-   $(".selectedMumer").append($("[name=ueserName] option:selected").text());
+  //  $(".selectedMumer").append($("[name=ueserName] option:selected").text());
 });
+
+
+//×ボタンクリック（モーダル非表示用）
+$(".fa-circle-xmark").on("click", function () {
+  loginModal.style.display = 'none';
+});
+
+

@@ -4,3 +4,21 @@ body{
     background-color: aquamarine;
 }
 
+body {
+    font-family: myfont;
+    font-size: 48px;
+}
+
+
+.navbar-brand{
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.navbar-nav{
+    margin-left: auto;
+}
+
+h1{
+    text-align: center;
+}

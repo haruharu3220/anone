@@ -4,29 +4,25 @@ h1{
 
 .inputMember{
   margin: 0 auto;
-  width: 50vw;
+  width: 40vw;
   display: flex;
 }
 
+.inputMemberName {
+margin-bottom: 5vh;
+} 
 
-.inputMemberName .inputMemberInput{
-  background: white;
-width: 100px;
+.inputMenberInput{
+  display: flex;
+  justify-content: center;
+  width: 38vw;
+  border: 2px solid gray;  /* 枠線 */
+  border-radius: 0.67em;   /* 角丸 */
+
 }
 
 #ueser{
   font-family: myfont;
-}
-
-.fa-regular{
-color: pink;
-
-}
-
-
-.inputMenberInput{
-  background-color: aqua;
-
 }
 
 .modal {
@@ -64,6 +60,42 @@ color: pink;
 }
 
 .modal-body p {
+  margin-top: 50px;
+
+  text-align: center;
   margin: 10px;
-  font-size: 32px;
+  font-size: 48px;
+}
+
+.modal-body p::before {
+  font-size: 48px;
+  content: "『";
+  text-align: center;
+}
+.modal-body p::after {
+  font-size: 48px;
+  content: "   』";
+  text-align: center;
+}
+
+.fa-circle-xmark{
+  float: right;
+
+}
+
+.navbar-brand{
+  font-size: 48px;
+  font-weight: bold;
+}
+
+
+.navbar-nav{
+  margin-left: auto;
+}
+
+.btn-outline-success{
+  margin-right: auto;
+  margin-left: auto;
+  width: 50%;
+  margin-bottom: 30px;
 }
