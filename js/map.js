@@ -127,6 +127,10 @@ $(".fa-circle-xmark").on("click", function () {
     messeageBox2.style.display = 'none';
 });
 
+//閉じるボタンクリック
+$(".btn-outline-secondary").on("click", function () {
+    messeageBox2.style.display = 'none';
+});
 
 
 
