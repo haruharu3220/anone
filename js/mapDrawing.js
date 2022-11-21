@@ -3,6 +3,8 @@
 let mapArea = document.getElementById('mapArea');
 mapArea.width = 1000;	//canvasの横幅
 mapArea.height = 500;	//canvasの縦幅
+mapArea.width = 1000;	//canvasの横幅
+mapArea.height = 500;	//canvasの縦幅
 
 //コンテキストを取得
 var mapArea2D = mapArea.getContext('2d');
@@ -174,18 +176,25 @@ function hasMeeages(e) {
         for (let i = 0; i < data.length; i++) {
             //自分宛てのメッセージがあれば（未読）
             if (jsonDataName === data[i].address && data[i].read === false) {
+                if(Number(data[i].sendDate) <= Number(nowDate)){
                 receivedMesseagePoint.push([data[i].X, data[i].Y]);
+                }
             }
+
+            // 自分が出したメッセージが未読状態なら
             if (jsonDataName === data[i].sender && data[i].read === false) {
 
                 if (Number(data[i].sendDate) > Number(nowDate)) {
+                    console.log("届ける日は"+ Number(data[i].sendDate));
+                    console.log("今日は" +Number(nowDate));
+                    
                     sendMesseagePoint.push([data[i].X, data[i].Y, pressRelease.yet]);
                 } else {
                     sendMesseagePoint.push([data[i].X, data[i].Y, pressRelease.done]);
                 }
 
             }
-
+            // 自分が出したメッセージが既読になったら
             if (jsonDataName === data[i].sender && data[i].read === true) {
                 if (data[i].type === "フリー") readMesseagePoint.push([data[i].X, data[i].Y, flower.free]);
                 if (data[i].type === "依頼") readMesseagePoint.push([data[i].X, data[i].Y, flower.request]);
