@@ -3,8 +3,8 @@
 let mapArea = document.getElementById('mapArea');
 mapArea.width = 1000;	//canvasの横幅
 mapArea.height = 500;	//canvasの縦幅
-mapArea.width = 1000;	//canvasの横幅
-mapArea.height = 500;	//canvasの縦幅
+mapArea.width =  window.innerWidth;	//canvasの横幅
+mapArea.height = window.innerHeight;	//canvasの縦幅
 
 //コンテキストを取得
 var mapArea2D = mapArea.getContext('2d');
@@ -21,8 +21,8 @@ me.left.src = '../res/my_left.png';
 me.back = new Image();
 me.back.src = '../res/my_back.png';
 
-me.x = 70;
-me.y = 400;
+me.x = window.innerWidth*0.2;
+me.y = window.innerHeight*0.85;
 me.move = 0;
 me.direction = "front";
 
@@ -107,39 +107,39 @@ function loop() {
     mapArea2D.drawImage(scenery04, 0, 0, mapArea.width, mapArea.height);
     //  自分あてにもらったメッセージを描画
     for (let i = 0; i < receivedMesseagePoint.length; i++) {
-        mapArea2D.drawImage(treasure, receivedMesseagePoint[i][0], receivedMesseagePoint[i][1], 32, 32);
+        mapArea2D.drawImage(treasure, receivedMesseagePoint[i][0], receivedMesseagePoint[i][1], 64, 64);
     }
     //送ったメッセージを描画
     for (let i = 0; i < sendMesseagePoint.length; i++) {
         if (sendMesseagePoint[i][2] === pressRelease.yet) {
-            mapArea2D.drawImage(rest, sendMesseagePoint[i][0], sendMesseagePoint[i][1], 32, 32);
+            mapArea2D.drawImage(rest, sendMesseagePoint[i][0], sendMesseagePoint[i][1], 64, 64);
         }
         if (sendMesseagePoint[i][2] === pressRelease.done) {
-            mapArea2D.drawImage(mogu, sendMesseagePoint[i][0], sendMesseagePoint[i][1], 32, 32);
+            mapArea2D.drawImage(mogu, sendMesseagePoint[i][0], sendMesseagePoint[i][1], 64, 64);
         }
 
     }
     //読まれたメッセージを描画
     for (let i = 0; i < readMesseagePoint.length; i++) {
         if (readMesseagePoint[i][2] === flower.free) {
-            mapArea2D.drawImage(flower_red, readMesseagePoint[i][0], readMesseagePoint[i][1], 32, 32);
+            mapArea2D.drawImage(flower_red, readMesseagePoint[i][0], readMesseagePoint[i][1], 64, 64);
         }
         if (readMesseagePoint[i][2] === flower.request) {
-            mapArea2D.drawImage(flower_orange, readMesseagePoint[i][0], readMesseagePoint[i][1], 32, 32);
+            mapArea2D.drawImage(flower_orange, readMesseagePoint[i][0], readMesseagePoint[i][1], 64, 64);
         }
         if (readMesseagePoint[i][2] === flower.consultation) {
-            mapArea2D.drawImage(flower_pink, readMesseagePoint[i][0], readMesseagePoint[i][1], 32, 32);
+            mapArea2D.drawImage(flower_pink, readMesseagePoint[i][0], readMesseagePoint[i][1], 64, 64);
         }
         if (readMesseagePoint[i][2] === flower.sharing) {
-            mapArea2D.drawImage(flower_yellow, readMesseagePoint[i][0], readMesseagePoint[i][1], 32, 32);
+            mapArea2D.drawImage(flower_yellow, readMesseagePoint[i][0], readMesseagePoint[i][1], 64, 64);
         }
 
     }
 
-    if (me.direction === "front") mapArea2D.drawImage(me.front, me.x, me.y, 32, 32);
-    if (me.direction === "right") mapArea2D.drawImage(me.right, me.x, me.y, 32, 32);
-    if (me.direction === "left") mapArea2D.drawImage(me.left, me.x, me.y, 32, 32);
-    if (me.direction === "back") mapArea2D.drawImage(me.back, me.x, me.y, 32, 32);
+    if (me.direction === "front") mapArea2D.drawImage(me.front, me.x, me.y, 64, 64);
+    if (me.direction === "right") mapArea2D.drawImage(me.right, me.x, me.y, 64, 64);
+    if (me.direction === "left") mapArea2D.drawImage(me.left, me.x, me.y, 64, 64);
+    if (me.direction === "back") mapArea2D.drawImage(me.back, me.x, me.y, 64, 64);
 
     // console.log("X="+ me.x );
     // console.log("Y="+ me.y );
@@ -221,7 +221,7 @@ function selectedMemberDisplay() {
 //パックマンがmoveが0より大きい場合は、4pxずつ移動を続ける
 function move(Object) {
     if (Object.move === 0) {
-        Object.move = 32;
+        Object.move = 64;
 
     }
     if (Object.move > 0) {
