@@ -63,8 +63,8 @@ flower_yellow.src = '../res/yellow_flower.png';
 
 
 //背景画像のオブジェクトを作成
-var scenery04 = new Image();
-scenery04.src = '../res/scenery04.png';
+var scenery = new Image();
+scenery.src = '../res/scenery03.png';
 
 //受け取ったメッセージの座標を格納するボックス
 let receivedMesseagePoint = [];
@@ -90,21 +90,19 @@ let pressRelease = {
 
 hasMeeages();
 
-scenery04.onload = function () {
-    mapArea2D.drawImage(scenery04, 0, 0, mapArea.width, mapArea.height * mapArea.width / scenery04.width);
+scenery.onload = function () {
+    mapArea2D.drawImage(scenery, 0, 0, mapArea.width, mapArea.height * mapArea.width / scenery.width);
 }
 
 //☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
 //描画用ループ関数
 //☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
 function loop() {
-    // fillStyle = scenery04.onload;
-    //mapArea2D.drawImage(scenery04, 0, 0, mapArea.width, mapArea.height * mapArea.width / scenery04.width);
-    //mapArea2D.drawImage(scenery04, 10, 30, 100, 100);
+
     move(me);
     hasMeeages();
     mapArea2D.fillRect(0, 0, mapArea.width, mapArea.height);
-    mapArea2D.drawImage(scenery04, 0, 0, mapArea.width, mapArea.height);
+    mapArea2D.drawImage(scenery, 0, 0, mapArea.width, mapArea.height);
     //  自分あてにもらったメッセージを描画
     for (let i = 0; i < receivedMesseagePoint.length; i++) {
         mapArea2D.drawImage(treasure, receivedMesseagePoint[i][0], receivedMesseagePoint[i][1], 64, 64);
@@ -240,7 +238,7 @@ function move(Object) {
             Object.y += 4;
         }
     }
-    //mapArea2D.fillStyle = scenery04.onload;
+    //mapArea2D.fillStyle = scenery.onload;
     mapArea2D.fillStyle = "lightpink";
     mapArea2D.fillRect(0, 0, mapArea.width, mapArea.height);
 }
