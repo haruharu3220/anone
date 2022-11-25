@@ -165,7 +165,7 @@ $("body").on("click", ".style-li", function () {
 
 
 //×ボタンクリック（モーダル非表示用）
-$(".fa-circle-xmark").on("click", function () {
+$(".fa-square-xmark").on("click", function () {
   loginModal.style.display = 'none';
 });
 

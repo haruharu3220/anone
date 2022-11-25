@@ -79,39 +79,46 @@ $("#btn-usage").on("click", function () {
 $(".btn-outline-success").on("click", function () {
     let day, month, year;
     let date = new Date($('#messeageBoxWhen').val());
-    day = date.getDate();
-    month = date.getMonth() + 1;
-    year = date.getFullYear();
-    let reservationDate = String(year) + String(month) + String(day);
-
-    console.log("置くをボタン押したよ");
-    //データを作成
-    const messeage = {
-        address: $("[name=who] option:selected").text(),//誰宛
-        sender: localStorage.getItem("selectedMumber"), //誰から
-        sendDate: reservationDate,                      //いつ開封するか
-        type: $("[name=type] option:selected").text(),  //タイプ
-        X: me.x,                                     //X座標
-        Y: me.y,                                     //Y座標
-        messeage: $("#messeageContent").val(),          //メッセージ
-        read: false                                     //メッセージが既読か未読か
-    }
-
-    data = [];
-    if (localStorage.getItem("messeages")) {
-        const jsonData = localStorage.getItem("messeages");
-        const data = JSON.parse(jsonData);
-        data[data.length] = messeage;
-
-        const jsonData2 = JSON.stringify(data);
-        localStorage.setItem("messeages", jsonData2);
+    console.log(date);
+    console.log(String(date.getTime()));
+    if (String(date.getTime()) == "NaN") {
+        alert("日付を入力してね！");
+        console.log("日付を入力してね");
     } else {
-        data[0] = messeage;
-        const jsonData2 = JSON.stringify(data);
-        localStorage.setItem("messeages", jsonData2);
-    }
+        day = date.getDate();
+        month = date.getMonth() + 1;
+        year = date.getFullYear();
+        let reservationDate = String(year) + String(month) + String(day);
 
-    messeageBox.style.display = 'none';
+        console.log("置くをボタン押したよ");
+        //データを作成
+        const messeage = {
+            address: $("[name=who] option:selected").text(),//誰宛
+            sender: localStorage.getItem("selectedMumber"), //誰から
+            sendDate: reservationDate,                      //いつ開封するか
+            type: $("[name=type] option:selected").text(),  //タイプ
+            X: me.x,                                     //X座標
+            Y: me.y,                                     //Y座標
+            messeage: $("#messeageContent").val(),          //メッセージ
+            read: false                                     //メッセージが既読か未読か
+        }
+
+        data = [];
+        if (localStorage.getItem("messeages")) {
+            const jsonData = localStorage.getItem("messeages");
+            const data = JSON.parse(jsonData);
+            data[data.length] = messeage;
+
+            const jsonData2 = JSON.stringify(data);
+            localStorage.setItem("messeages", jsonData2);
+        } else {
+            data[0] = messeage;
+            const jsonData2 = JSON.stringify(data);
+            localStorage.setItem("messeages", jsonData2);
+        }
+
+        messeageBox.style.display = 'none';
+    }
 });
 
 
