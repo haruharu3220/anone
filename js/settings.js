@@ -46,28 +46,34 @@ $(".btn-outline-success").on("click", function () {
   location.href = "../html/map.html";
 });
 
+//画面表示時に実行
+//ローカルストレージに登録している名前を表示
 checkFamily();
 function checkFamily() {
   if (localStorage.getItem("myfamily")) {
     const jsonData = localStorage.getItem("myfamily");
     const data = JSON.parse(jsonData);
     for (let i = 0; i < data.length; i++) {
-      const ul = document.getElementById("characterList");
-      const li = document.createElement("li");
-      const text = document.createTextNode(data[i]);
-      li.appendChild(text);
-      ul.appendChild(li);
-      $("#characterList").append(ul);
-      $("#characterList").css("text-align", "center");
 
-      var familyIndex = -2;
-      $('li').each(function () {
-        if (familyIndex >= 0) {
-          $(this).addClass('style-li');
-          $(this).addClass('style-li' + familyIndex);
-        }
+
+      //入力した名前とアイコンを表示する
+      $('#characterList').append(
+        "<div class=\"family\">"
+        + "<li>"
+        + data[i]
+        + "</li>"
+        + "<div><i class=\"fa-regular fa-pen-to-square \"></i></div>"
+        + "<i class=\"fa-regular fa-circle-xmark \"></i>"
+        + "</div>"
+      );
+
+      var familyIndex = 0;
+      $('.family li').each(function () {
+        $(this).addClass('style-li');
+        $(this).addClass('style-li' + familyIndex);
         familyIndex++;
       })
+
 
     }
   }
@@ -89,16 +95,14 @@ $(".fa-square-plus").on("click", function () {
   //入力した名前とアイコンを表示する
   $('#characterList').append(
     "<div class=\"family\">"
-  +"<li>"  
-  + $(".inputMenberInput").val() 
-  +"</li>"
-  +"<div><i class=\"fa-regular fa-pen-to-square \"></i></div>"
-  +"<i class=\"fa-regular fa-circle-xmark \"></i>"
-
-  +"</div>"
-
+    + "<li>"
+    + $(".inputMenberInput").val()
+    + "</li>"
+    + "<div><i class=\"fa-regular fa-pen-to-square \"></i></div>"
+    + "<i class=\"fa-regular fa-circle-xmark \"></i>"
+    + "</div>"
   );
- 
+
   // $("#characterList").append(ul);
   $("#characterList").css("text-align", "center");
 
@@ -107,8 +111,8 @@ $(".fa-square-plus").on("click", function () {
   //そのためiを3にしておく
   var familyIndex = 0;
   $('.family li').each(function () {
-      $(this).addClass('style-li');
-      $(this).addClass('style-li' + familyIndex);
+    $(this).addClass('style-li');
+    $(this).addClass('style-li' + familyIndex);
     familyIndex++;
   })
 
