@@ -1,6 +1,5 @@
 body {
     font-family: myfont;
-    font-size: 48px;
 }
 
 
@@ -11,11 +10,6 @@ body {
 
 .navbar-nav {
     margin-left: auto;
-}
-
-
-.top {
-    font-weight: bold;
 }
 
 h1 {
