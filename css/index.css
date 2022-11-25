@@ -4,17 +4,17 @@ body {
 }
 
 
-.navbar-brand{
+.navbar-brand {
     font-size: 48px;
     font-weight: bold;
 }
 
-.navbar-nav{
+.navbar-nav {
     margin-left: auto;
 }
 
 
-.top{
+.top {
     font-weight: bold;
 }
 
@@ -30,7 +30,7 @@ h1 {
     filter: blur(6px) brightness(0.9);
     /* filter: blur(5px) brightness(0.9); */
     width: 100%;
-    height:100vh;
+    height: 100vh;
 }
 
 .top {
@@ -52,7 +52,8 @@ h1 {
     position: absolute;
     font-weight: bold;
     /*太字に*/
-    font-size: 3em;
+    /* font-size: 3em; */
+    font-size: 80px;
     /*サイズ2倍*/
     top: 20%;
     left: 50%;
@@ -63,14 +64,12 @@ h1 {
     padding: 0;
 }
 
-
 .top #messeage01 {
     position: absolute;
     /*絶対配置*/
     font-weight: bold;
     /*太字に*/
-    font-size: 1em;
-    /*サイズ2倍*/
+    font-size: 48px;
     top: 53%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
@@ -156,4 +155,34 @@ h1 {
     /* width: 70vw; */
     margin: 0;
     padding: 0;
+}
+
+
+/*-----スマホ向けの記述-----*/
+@media screen and (max-width: 479px) {
+
+    /*ウィンドウ幅が0～479pxの場合にCSSを適用*/
+    .top h1 {
+        font-size: 36px;
+    }
+    .top #messeage01,
+    .top #messeage02{
+        font-size: 16px;
+        color: red;
+    }
+}
+
+
+/*-----タブレット向けの記述-----*/
+@media screen and (max-width: 767px) {
+
+    /*ウィンドウ幅が0～767pxの場合にCSSを適用*/
+    .top h1 {
+        font-size: 48px;
+    }
+    .top #messeage01,
+    .top #messeage02{
+        font-size: 24px;
+        color: blue;
+    }
 }
