@@ -79,11 +79,10 @@ $("#btn-usage").on("click", function () {
 $(".btn-outline-success").on("click", function () {
     let day, month, year;
     let date = new Date($('#messeageBoxWhen').val());
-    console.log(date);
-    console.log(String(date.getTime()));
+
+    //日付が入力されていない時はアラームを上げる
     if (String(date.getTime()) == "NaN") {
         alert("日付を入力してね！");
-        console.log("日付を入力してね");
     } else {
         day = date.getDate();
         month = date.getMonth() + 1;
