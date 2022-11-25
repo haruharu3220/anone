@@ -14,16 +14,11 @@
 // ■ jQuery Sample Site　★★★
 // http://semooh.jp/jquery/sample/
 // 
-// 
-
-
-
 
 
 //デバッグ用ボタン→ローカルストレージの中身を消去
 $(".btn-reset").on("click", function () {
   console.log("resetボタン押したよ");
-
 
   if (localStorage.getItem("myfamily")) {
     const jsonData = localStorage.getItem("myfamily");
@@ -36,9 +31,6 @@ $(".btn-reset").on("click", function () {
   localStorage.clear()
   member.splice(0);
 });
-
-
-
 
 
 //TOPに戻るボタン
@@ -86,43 +78,41 @@ function checkFamily() {
 $(".fa-square-plus").on("click", function () {
   console.log("家族登録ボタン押したよ");
 
-  // if (localStorage.getItem("myfamily")) {
-  //   const jsonData = localStorage.getItem("myfamily");
-  //   const data = JSON.parse(jsonData);
-  //   for(let i=0;i<data.length;i++){
-  //     const ul = document.getElementById("characterList");
-  //     const li = document.createElement("li");
-  //     const text = document.createTextNode(data[i]);
-  //     li.appendChild(text);
-  //     ul.appendChild(li);
-  //     $("#characterList").append(ul);
-  //     $("#characterList").css("text-align","center");
-  //   }
-  // }
-
-
   const ul = document.getElementById("characterList");
   const li = document.createElement("li");
   const text = document.createTextNode($(".inputMenberInput").val());
 
   li.appendChild(text);
   // console.log(li);
-  ul.appendChild(li);
+  // ul.appendChild(li);
 
+  //入力した名前とアイコンを表示する
+  $('#characterList').append(
+    "<div class=\"family\">"
+  +"<li>"  
+  + $(".inputMenberInput").val() 
+  +"</li>"
+  +"<div><i class=\"fa-regular fa-pen-to-square \"></i></div>"
+  +"<i class=\"fa-regular fa-circle-xmark \"></i>"
+
+  +"</div>"
+
+  );
+ 
   // $("#characterList").append(ul);
   $("#characterList").css("text-align", "center");
 
 
   //ナビバーのliタグも数えているから5からスタートになる
   //そのためiを3にしておく
-  var familyIndex = -2;
-  $('li').each(function () {
-    if (familyIndex >= 0) {
+  var familyIndex = 0;
+  $('.family li').each(function () {
       $(this).addClass('style-li');
       $(this).addClass('style-li' + familyIndex);
-    }
     familyIndex++;
   })
+
+
 
   let mumber = [];
 
@@ -138,8 +128,6 @@ $(".fa-square-plus").on("click", function () {
     const jsonData2 = JSON.stringify(mumber);
     localStorage.setItem("myfamily", jsonData2);
   }
-
-
 
   //追加後、入力フォーム初期化
   $(".inputMenberInput").val("");
@@ -163,3 +151,12 @@ $(".fa-circle-xmark").on("click", function () {
 });
 
 
+//キャラ選択ボタン→各キャラ分作成必要あり
+$("body").on("click", ".style-li", function () {
+  //ログインモーダル表示
+  $(".selectedMumer").text("");
+  $(".selectedMumer").append($(this).text());
+  localStorage.setItem("selectedMumber", $(this).text());
+  loginModal.style.display = 'block';
+  //  $(".selectedMumer").append($("[name=ueserName] option:selected").text());
+});

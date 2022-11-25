@@ -99,3 +99,9 @@ margin-bottom: 5vh;
   width: 50%;
   margin-bottom: 30px;
 }
+
+.family{  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
