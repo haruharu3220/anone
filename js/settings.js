@@ -73,7 +73,16 @@ function checkFamily() {
         $(this).addClass('style-li' + familyIndex);
         familyIndex++;
       })
-
+      var familyIndexPenToSquare = 0;
+      $('.family .fa-pen-to-square').each(function () {
+        $(this).addClass('style-li-PenToSquare' + familyIndexPenToSquare);
+        familyIndexPenToSquare++;
+      })
+      var familyIndexXmark = 0;
+      $('.family .fa-circle-xmark').each(function () {
+        $(this).addClass('style-li-Xmark' + familyIndexXmark);
+        familyIndexXmark++;
+      })
 
     }
   }
@@ -106,16 +115,22 @@ $(".fa-square-plus").on("click", function () {
   // $("#characterList").append(ul);
   $("#characterList").css("text-align", "center");
 
-
-  //ナビバーのliタグも数えているから5からスタートになる
-  //そのためiを3にしておく
   var familyIndex = 0;
   $('.family li').each(function () {
     $(this).addClass('style-li');
     $(this).addClass('style-li' + familyIndex);
     familyIndex++;
   })
-
+  var familyIndexPenToSquare = 0;
+  $('.family .fa-pen-to-square').each(function () {
+    $(this).addClass('style-li-PenToSquare' + familyIndexPenToSquare);
+    familyIndexPenToSquare++;
+  })
+  var familyIndexXmark = 0;
+  $('.family .fa-circle-xmark').each(function () {
+    $(this).addClass('style-li-Xmark' + familyIndexXmark);
+    familyIndexXmark++;
+  })
 
 
   let mumber = [];
@@ -155,12 +170,43 @@ $(".fa-circle-xmark").on("click", function () {
 });
 
 
-//キャラ選択ボタン→各キャラ分作成必要あり
-$("body").on("click", ".style-li", function () {
-  //ログインモーダル表示
-  $(".selectedMumer").text("");
-  $(".selectedMumer").append($(this).text());
-  localStorage.setItem("selectedMumber", $(this).text());
-  loginModal.style.display = 'block';
-  //  $(".selectedMumer").append($("[name=ueserName] option:selected").text());
+//名前横の×アイコンをクリック
+$("body").on("click", ".fa-circle-xmark", function () {
+
+  //クラス名を取得→何番目の名前なのか番号を取得
+  var className = $(this).attr("class");
+  let classNameSplit = className.split(" ");
+  classNameSplit[classNameSplit.length - 1];
+  let number = classNameSplit[classNameSplit.length - 1].replace("style-li-Xmark", "");
+
+
+  
+//ローカルストレージを削除
+  if (localStorage.getItem("myfamily")) {
+    const jsonData = localStorage.getItem("myfamily");
+    const data = JSON.parse(jsonData);
+    data.splice(Number(number),1);
+    // var cats_before = cats.splice(1,2);
+    const jsonData2 = JSON.stringify(data);
+    localStorage.setItem("myfamily", jsonData2);
+  }
+
+
+  //×アイコンを押したら文字を削除
+  let targetli = ".style-li" + number;
+  let targetPenToSquare = ".style-li-PenToSquare" + number;
+  $(this).remove();
+  $(targetPenToSquare).remove();
+  $(targetli).remove();
+
+
+
+  console.log($(targetli).text());
+
+  // if (localStorage.getItem("myfamily")) {
+  //   const jsonData = localStorage.getItem("myfamily");
+  //   const data = JSON.parse(jsonData);
+  //   for (let i = 0; i < data.length; i++) {
+  //   }
+
 });
